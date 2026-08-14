@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 480" role="img" aria-labelledby="title desc">
+  <title id="title">Mesa compartida de Giramesa</title><desc id="desc">Ilustración cenital de una mesa larga con platos, cubiertos y motivos de Cádiz.</desc>
+  <rect x="34" y="44" width="692" height="392" rx="84" fill="#fffdf8" stroke="#146356" stroke-width="4"/><path d="M304 45h152v390H304z" fill="#f4a261"/>
+  <path d="M324 45v390M344 45v390M364 45v390M384 45v390M404 45v390M424 45v390M444 45v390" stroke="#fffdf8" stroke-width="3" stroke-dasharray="10 10" opacity=".78"/>
+  <g fill="none" stroke="#146356" stroke-width="4"><circle cx="174" cy="155" r="54"/><circle cx="174" cy="155" r="34"/><circle cx="586" cy="155" r="54"/><circle cx="586" cy="155" r="34"/><circle cx="174" cy="325" r="54"/><circle cx="174" cy="325" r="34"/><circle cx="586" cy="325" r="54"/><circle cx="586" cy="325" r="34"/></g>
+  <g fill="#146356"><rect x="93" y="105" width="7" height="100" rx="3"/><rect x="248" y="105" width="7" height="100" rx="3"/><rect x="505" y="105" width="7" height="100" rx="3"/><rect x="660" y="105" width="7" height="100" rx="3"/><rect x="93" y="275" width="7" height="100" rx="3"/><rect x="248" y="275" width="7" height="100" rx="3"/><rect x="505" y="275" width="7" height="100" rx="3"/><rect x="660" y="275" width="7" height="100" rx="3"/></g>
+  <g fill="#f4a261" stroke="#146356" stroke-width="3"><path d="M155 150c18-22 39-17 49 0-15 13-34 13-49 0Z"/><path d="m155 150-12-9 2 16Z"/><path d="M567 320c18-22 39-17 49 0-15 13-34 13-49 0Z"/><path d="m567 320-12-9 2 16Z"/></g>
+  <g fill="#146356"><circle cx="380" cy="108" r="18"/><circle cx="380" cy="240" r="18"/><circle cx="380" cy="372" r="18"/></g><path d="M370 108h20M380 98v20M370 240h20M380 230v20M370 372h20M380 362v20" stroke="#f5f1e8" stroke-width="3"/>
+</svg>

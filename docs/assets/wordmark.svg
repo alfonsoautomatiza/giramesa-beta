@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 214 52" role="img" aria-labelledby="title desc">
+  <title id="title">Giramesa</title><desc id="desc">Marca Giramesa con una mesa circular compartida.</desc>
+  <circle cx="26" cy="26" r="23" fill="#146356"/><path d="M13 26a13 13 0 0 1 21-10M39 26a13 13 0 0 1-21 10" fill="none" stroke="#f5f1e8" stroke-width="4" stroke-linecap="round"/><circle cx="26" cy="26" r="4" fill="#f4a261"/>
+  <text x="58" y="35" fill="#146356" font-family="Trebuchet MS, Verdana, sans-serif" font-size="29" font-weight="700" letter-spacing="-1">giramesa</text>
+</svg>

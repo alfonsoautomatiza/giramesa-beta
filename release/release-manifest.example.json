@@ -1,0 +1,15 @@
+{
+  "$schema": "./release-manifest.schema.json",
+  "version": "0.0.0-example",
+  "android": {
+    "asset": "giramesa-0.0.0-example.apk",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "ios": {
+    "testFlightUrl": "",
+    "version": ""
+  },
+  "releaseNotes": [
+    "Ejemplo de cambio visible para testers."
+  ]
+}

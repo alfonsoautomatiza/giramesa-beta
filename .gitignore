@@ -1,0 +1,34 @@
+# Release artifacts must remain outside the Git tree.
+*.apk
+*.aab
+*.ipa
+*.apks
+*.mapping.txt
+mapping.txt
+
+# Signing and provisioning material.
+*.jks
+*.keystore
+*.p12
+*.pfx
+*.cer
+*.mobileprovision
+*.provisionprofile
+
+# Private service configuration and local secrets.
+.env
+.env.*
+!.env.example
+google-services.json
+GoogleService-Info.plist
+service-account*.json
+*.pem
+*.key
+
+# Local tooling.
+__pycache__/
+*.py[cod]
+.DS_Store
+.idea/
+.vscode/
+release-notes.md
