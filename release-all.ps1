@@ -4,8 +4,7 @@ param(
     [string]$AppRepositorySlug = 'wertyMSD/donde-comer',
     [string]$Branch = 'main',
     [string]$BetaRepositorySlug = 'wertyMSD/giramesa-beta',
-    [Parameter(Mandatory = $true)]
-    [string]$ReleaseNotesFile,
+    [string]$ReleaseNotesFile = (Join-Path $PSScriptRoot 'release-notes.txt'),
     [string]$ApiBaseUrl,
     [switch]$SkipAndroid,
     [switch]$SkipWeb,
@@ -248,6 +247,9 @@ $metadata = Get-FlutterReleaseMetadata (Join-Path $AppRepository 'app/pubspec.ya
 $releaseVersion = $metadata.Version
 $buildNumber = $metadata.BuildNumber
 $tag = "v$releaseVersion"
+if ((Get-Content -Raw $ReleaseNotesFile) -match 'TODO: rellenar las notas de esta release') {
+    throw "ReleaseNotesFile ($ReleaseNotesFile) todavía tiene el texto TODO por defecto. Rellená las notas de la release antes de continuar."
+}
 $notesBytes = Assert-SafeReleaseNotes $ReleaseNotesFile
 $notesBase64 = [Convert]::ToBase64String($notesBytes)
 
@@ -271,9 +273,9 @@ if ([string]$remoteBranch.commit.sha -cne $headSha) {
 Invoke-Gh -Gh $gh -Arguments @('api', '--method', 'GET', "repos/$AppRepositorySlug/contents/.github/workflows/release-test-builds.yml", '-f', "ref=$Branch") -FailureMessage "release-test-builds.yml no existe en $AppRepositorySlug@$Branch" | Out-Null
 Invoke-Gh -Gh $gh -Arguments @('workflow', 'view', 'release-test-builds.yml', '--repo', $AppRepositorySlug) -FailureMessage 'El workflow existe como archivo pero GitHub Actions no lo reconoce en la rama predeterminada' | Out-Null
 
-$releaseProbe = Invoke-Gh -Gh $gh -Arguments @('release', 'view', $tag, '--repo', $BetaRepositorySlug, '--json', 'url') -FailureMessage '' -AllowFailure
+$releaseProbe = Invoke-Gh -Gh $gh -Arguments @('release', 'view', $tag, '--repo', $BetaRepositorySlug, '--json', 'url') -FailureMessage "No se pudo consultar la Release $tag" -AllowFailure
 Assert-GithubObjectAbsent -Result $releaseProbe -ObjectDescription "La Release $tag en $BetaRepositorySlug"
-$tagProbe = Invoke-Gh -Gh $gh -Arguments @('api', '--method', 'GET', "repos/$BetaRepositorySlug/git/ref/tags/$tag") -FailureMessage '' -AllowFailure
+$tagProbe = Invoke-Gh -Gh $gh -Arguments @('api', '--method', 'GET', "repos/$BetaRepositorySlug/git/ref/tags/$tag") -FailureMessage "No se pudo consultar el tag $tag" -AllowFailure
 Assert-GithubObjectAbsent -Result $tagProbe -ObjectDescription "El tag $tag en $BetaRepositorySlug"
 
 $beforeRunsResult = Invoke-Gh -Gh $gh -Arguments @('run', 'list', '--repo', $AppRepositorySlug, '--workflow', 'release-test-builds.yml', '--event', 'workflow_dispatch', '--limit', '100', '--json', 'databaseId') -FailureMessage 'No se pudo obtener la lista inicial de ejecuciones'
