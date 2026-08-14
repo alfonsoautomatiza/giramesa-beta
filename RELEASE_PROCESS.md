@@ -1,50 +1,78 @@
 # Publicar una versión de prueba de Giramesa
 
-La compilación y la firma ocurren siempre en el repositorio privado de la aplicación. Este repositorio público recibe únicamente el APK final destinado a testers, su checksum y notas depuradas.
+La compilación y la firma ocurren siempre en el repositorio privado de la aplicación. El comando preferido, `release-all.ps1`, valida y dispara un único workflow privado con runners separados para Android, web, Windows e iOS. Nunca compila iOS en Windows.
 
 ## Flujo rápido
 
-1. Verificar y firmar una compilación release en el entorno privado.
-2. Renombrar el archivo como `giramesa-X.Y.Z.apk`.
-3. Calcular `SHA-256` y preparar notas sin datos internos.
-4. Crear el tag `vX.Y.Z` y una GitHub Release pública en este repositorio.
-5. Adjuntar solo el APK y `giramesa-X.Y.Z.apk.sha256`.
-6. Verificar el portal publicado desde Android y escritorio.
-7. Gestionar TestFlight por separado y actualizar `docs/config.js` solo cuando haya un enlace público válido.
+1. Editar `DONDE_COMER/app/pubspec.yaml` con `version: X.Y.Z[-prerelease]+N`, confirmar el cambio y sincronizarlo normalmente con la rama remota.
+2. Preparar notas públicas sin datos internos y ejecutar `release-all.ps1`; no se proporciona versión ni build por parámetros.
+3. El script valida el worktree privado, commit, autenticación, repositorios, visibilidad, rama, workflow, tag/Release y notas, y dispara un solo `workflow_dispatch` en el repositorio privado.
+4. CI prueba antes de compilar; Android verifica firma no-debug, web y Windows generan ZIP, e iOS sube la IPA sólo a TestFlight.
+5. Verificar el portal publicado desde Android y escritorio.
+6. Gestionar TestFlight por separado y actualizar `docs/config.js` solo cuando haya un enlace público válido.
 
 ## Prerrequisitos
 
-- Acceso autorizado al repositorio privado y al proceso de firma Android.
-- Una compilación **release** probada; nunca una compilación debug.
-- Acceso de mantenimiento al futuro repositorio público `wertyMSD/giramesa-beta`.
-- Para iPhone: Apple Developer Program, App Store Connect, una compilación aprobada para el grupo correspondiente y un enlace público de TestFlight.
+- Windows PowerShell 5.1 o PowerShell 7 y GitHub CLI (`gh`) ya autenticado; el controlador no autentica ni acepta tokens.
+- Worktree privado local limpio en la rama elegida, con `HEAD` igual a `origin/<rama>` y al commit remoto de GitHub. El controlador no hace `fetch`, `pull`, `merge`, `commit` ni `push`.
+- Repositorio de aplicación PRIVATE `wertyMSD/donde-comer`, repositorio beta PUBLIC `wertyMSD/giramesa-beta` y workflow instalado en la rama predeterminada y en la ref elegida.
+- Secretos y firma privada configurados según [private-repo-template/SECRETS.md](private-repo-template/SECRETS.md).
+- Plantilla instalada según [private-repo-template/INSTALL.md](private-repo-template/INSTALL.md). Por sí sola en este repositorio público no ejecuta nada.
+- Apple Developer Program y App Store Connect preparados. El acceso externo por TestFlight puede requerir Beta App Review de Apple.
 
 ## Convenciones
 
 | Elemento | Formato | Ejemplo |
 |---|---|---|
-| Versión | SemVer | `1.4.0` |
+| Flutter `version:` | SemVer estricto + entero positivo | `version: 1.4.0+14` |
+| Versión de Release | Parte anterior a `+` | `1.4.0` |
+| Build de plataformas | Parte posterior a `+` | `14` |
 | Tag | `vX.Y.Z` | `v1.4.0` |
-| APK | `giramesa-X.Y.Z.apk` | `giramesa-1.4.0.apk` |
-| Checksum | `<apk>.sha256` | `giramesa-1.4.0.apk.sha256` |
+| APK CI | `giramesa-android-vX.Y.Z-bN.apk` | `giramesa-android-v1.4.0-b14.apk` |
+| Web/Windows CI | `giramesa-<plataforma>-vX.Y.Z-bN.zip` | `giramesa-web-v1.4.0-b14.zip` |
+| Checksum | `<asset>.sha256` | `giramesa-android-v1.4.0-b14.apk.sha256` |
 
-Las versiones previas pueden usar sufijos SemVer, por ejemplo `v1.4.0-rc.1`, pero GitHub no las devolverá desde el endpoint `releases/latest` si se marcan como prerelease. El canal normal del portal debe usar Releases estables de prueba.
+`DONDE_COMER/app/pubspec.yaml` es la única autoridad de versión. El controlador y el workflow rechazan claves ausentes, duplicadas o malformadas y nunca preguntan, aceptan ni sobrescriben versión/build. Android rechaza o no ofrece como actualización un APK cuyo `versionCode` sea menor o igual al instalado; Apple también exige un `CFBundleVersion` válido para cada carga.
 
-## Preparar el APK Android
+Las versiones previas pueden usar sufijos SemVer, por ejemplo `1.4.0-rc.1`. El tag conserva el sufijo (`v1.4.0-rc.1`) y la Release se marca prerelease automáticamente. Para Android, Flutter recibe el núcleo compatible `--build-name 1.4.0`; la identidad prerelease permanece en el tag y nombre del asset.
 
-En el repositorio privado:
+## Publicación multiplataforma preferida
 
-```bash
-sha256sum giramesa-1.4.0.apk > giramesa-1.4.0.apk.sha256
+Primero editá y confirmá la versión Flutter en el repositorio privado, por ejemplo:
+
+```yaml
+version: 0.1.1+2
 ```
 
-Antes de mover los dos archivos al flujo de publicación, comprobar:
+Después simulá todos los controles no mutantes:
 
-- Firma de release conocida y coherente con versiones anteriores.
-- Nombre conforme a la convención.
-- Pruebas mínimas en un dispositivo limpio y como actualización.
-- Ausencia de símbolos, mapas, credenciales o configuración interna junto al artefacto.
-- Coincidencia del checksum recalculado.
+```powershell
+./release-all.ps1 -ReleaseNotesFile ./release-notes.md -WhatIf
+```
+
+El comando principal de publicación es:
+
+```powershell
+./release-all.ps1 -ReleaseNotesFile ./release-notes.md -Wait
+```
+
+El controlador deriva por defecto el worktree privado desde el directorio hermano `DONDE_COMER` (`D:\py\@android\DONDE_COMER` en el layout estándar), usa la rama `main`, la aplicación `wertyMSD/donde-comer` y el destino `wertyMSD/giramesa-beta`. `-AppRepository`, `-AppRepositorySlug`, `-Branch` y `-BetaRepositorySlug` permiten ajustar esas ubicaciones explícitamente. `-SkipAndroid`, `-SkipWeb`, `-SkipWindows` y `-SkipIos` seleccionan trabajos; no se permite omitirlos todos. `-Wait` muestra URL y estado final. `-WhatIf` completa todas las lecturas, imprime versión/build y el comando planificado, pero no ejecuta `gh workflow run`.
+
+El workflow recibe únicamente el SHA esperado, destino beta, notas codificadas, URL pública opcional y toggles de plataforma. Tras checkout, un job `metadata` verifica el SHA y vuelve a parsear de forma independiente el único `version:` top-level de `app/pubspec.yaml`; todos los jobs consumen esas mismas salidas.
+
+Los nombres incluyen versión y build para evitar sustituciones silenciosas. La Release pública recibe sólo APK, ZIP web, ZIP Windows y checksums. La IPA nunca se publica ni se conserva como artifact de Actions: el job macOS la carga directamente a TestFlight y la elimina. El workflow usa un token fine-grained limitado al repositorio beta porque el `GITHUB_TOKEN` de la aplicación no puede escribir en otro repositorio.
+
+El ZIP web es un artefacto descargable, no un despliegue vivo. Un despliegue público debe diseñarse por separado y no sobrescribir el portal beta. El ZIP Windows contiene la salida release; no se afirma que sea un instalador.
+
+## Publicación Android local especializada
+
+`publish-android-release.ps1` sigue disponible como herramienta secundaria cuando se necesita compilar y publicar únicamente Android desde una estación Windows ya configurada:
+
+```powershell
+./publish-android-release.ps1 -ReleaseNotesFile ./release-notes.md -WhatIf
+```
+
+Este flujo especializado también deriva versión/build de `DONDE_COMER/app/pubspec.yaml`; exige Flutter, Java, Android SDK Build-Tools y `apksigner.bat` locales. No incluye web, Windows ni iOS. `publish-public-repo.ps1` también se conserva exclusivamente para bootstrap/mantenimiento del portal y Pages.
 
 Los binarios se adjuntan a GitHub Releases; **nunca se agregan al árbol Git**.
 
@@ -67,19 +95,17 @@ SHA-256: <checksum del APK>
 
 No incluir incidencias privadas, nombres de personas, correos, endpoints internos, trazas con datos reales ni detalles que amplíen la superficie de ataque.
 
-## Publicar en GitHub Releases
+## Controles del publicador Android especializado
 
-Después de autenticar `gh` y configurar el remoto:
+El script ejecuta `flutter pub get`, `flutter test` salvo `-SkipTests`, y únicamente `flutter build apk --release`. Después exige una firma válida con `apksigner verify --verbose --print-certs` y bloquea explícitamente certificados Android Debug.
 
-```bash
-git tag v1.4.0
-git push origin v1.4.0
-gh release create v1.4.0 giramesa-1.4.0.apk giramesa-1.4.0.apk.sha256 --title "Giramesa 1.4.0" --notes-file release-notes.md
-```
+Antes de crear `v<versión>`, comprueba que el tag y la Release no existan local ni remotamente, valida `scripts/validate_public_repo.py` y revisa patrones obvios de secretos en las notas sin imprimir coincidencias. `gh release create` apunta a `main`, adjunta sólo APK y checksum, y nunca hace commit, force push ni mueve material de firma.
 
-`release-notes.md` es un archivo temporal de trabajo y no debe contener información sensible. Revisar la Release pública antes de compartirla.
+Si no se indica `-ReleaseNotesFile`, el script especializado pide confirmación explícita antes de generar una plantilla neutral. El flujo unificado siempre exige el archivo. Ante un fallo, `.release-work\<versión>` se conserva ignorado para diagnóstico.
 
 ## Habilitar TestFlight
+
+El publicador Android especializado de Windows **nunca publica iPhone**. En el flujo preferido, iOS se compila en `macos-latest`, se carga directamente a TestFlight y no llega a la Release pública. TestFlight requiere App Store Connect y su propio proceso de firma y revisión.
 
 1. Subir y procesar la compilación iOS en App Store Connect desde el flujo privado.
 2. Completar la revisión de TestFlight cuando Apple la requiera.
@@ -101,7 +127,7 @@ Para iPhone, retirar la compilación o cerrar el enlace en App Store Connect. Si
 
 ## Separación obligatoria
 
-Nunca copies directorios del proyecto privado a este repositorio. Transferí solo el APK final y el checksum al paso de creación de la Release, fuera del índice de Git. Ejecutá siempre:
+Nunca copies directorios del proyecto privado a este repositorio. El workflow transfiere sólo APK, ZIP web, ZIP Windows y checksums al límite público; el publicador especializado transfiere sólo APK y checksum. Ningún binario se agrega al índice Git. Ejecutá siempre:
 
 ```bash
 python3 scripts/validate_public_repo.py

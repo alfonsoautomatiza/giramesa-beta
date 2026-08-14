@@ -393,7 +393,12 @@ try {
         Write-Host "Portal: https://$Owner.github.io/$Repository/"
     }
 
-    Write-Status 'Publicación del portal finalizada. Android y Apple requieren procesos separados.'
+    if ($WhatIfPreference) {
+        Write-Status 'Simulación completada; no se aplicaron mutaciones.'
+    }
+    else {
+        Write-Status 'Publicación del portal finalizada. Android y Apple requieren procesos separados.'
+    }
 }
 finally {
     Pop-Location

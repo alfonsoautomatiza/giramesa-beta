@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -45,6 +46,15 @@ class PublicRepositoryValidationTests(unittest.TestCase):
         }
         self._write("release/release-manifest.example.json", json.dumps(manifest))
         self._write("release/release-manifest.schema.json", "{}")
+        repository_root = MODULE_PATH.parents[1]
+        for relative in (
+            "release-all.ps1",
+            "private-repo-template/.github/workflows/release-test-builds.yml",
+        ):
+            self._write(relative, (repository_root / relative).read_text(encoding="utf-8"))
+
+    def _initialize_git(self) -> None:
+        subprocess.run(["git", "init", "-q", str(self.root)], check=True)
 
     def error_codes(self):
         return {issue.code for issue in validator.validate_repository(self.root) if issue.severity == "error"}
@@ -57,6 +67,136 @@ class PublicRepositoryValidationTests(unittest.TestCase):
     def test_release_binary_in_tree_is_rejected(self):
         self._write("release/giramesa-1.2.3.apk", "not a real binary")
         self.assertIn("forbidden-file", self.error_codes())
+
+    def test_ignored_release_work_apk_is_not_treated_as_repository_content(self):
+        self._write(".gitignore", ".release-work/\n*.apk\n")
+        self._write(".release-work/1.2.3/giramesa-1.2.3.apk", "local work product")
+        self._initialize_git()
+        self.assertNotIn("forbidden-file", self.error_codes())
+
+    def test_tracked_apk_is_rejected_even_when_gitignored(self):
+        tracked_apk = ".release-work/1.2.3/giramesa-1.2.3.apk"
+        self._write(".gitignore", ".release-work/\n*.apk\n")
+        self._write(tracked_apk, "tracked forbidden binary")
+        self._initialize_git()
+        subprocess.run(
+            ["git", "-C", str(self.root), "add", "-f", tracked_apk],
+            check=True,
+        )
+        self.assertIn("forbidden-file", self.error_codes())
+
+    def test_android_release_script_declares_safety_contract(self):
+        script = (MODULE_PATH.parents[1] / "publish-android-release.ps1").read_text(encoding="utf-8")
+        required_markers = (
+            "SupportsShouldProcess = $true",
+            "flutter build apk",
+            "--release",
+            "apksigner",
+            "Android Debug",
+            "scripts\\validate_public_repo.py",
+            "gh release create",
+            ".release-work",
+            "TestFlight requiere un flujo separado",
+        )
+        for marker in required_markers:
+            with self.subTest(marker=marker):
+                self.assertIn(marker, script)
+
+    def test_release_controller_declares_dispatch_and_whatif_contract(self):
+        script = (MODULE_PATH.parents[1] / "release-all.ps1").read_text(encoding="utf-8")
+        for marker in (
+            "SupportsShouldProcess = $true",
+            "$WhatIfPreference",
+            "gh workflow run",
+            "release-test-builds.yml",
+            "app/pubspec.yaml",
+            "refs/remotes/origin/$Branch",
+            "expected_commit_sha=$headSha",
+            "AppRepositorySlug = 'wertyMSD/donde-comer'",
+            "BetaRepositorySlug = 'wertyMSD/giramesa-beta'",
+        ):
+            with self.subTest(marker=marker):
+                self.assertIn(marker, script)
+
+    def test_release_controller_has_no_version_or_build_number_parameters(self):
+        script = (MODULE_PATH.parents[1] / "release-all.ps1").read_text(encoding="utf-8")
+        param_block = validator._powershell_param_block(script)
+        self.assertTrue(param_block)
+        self.assertNotRegex(param_block, r"(?im)^\s*\[[^\]]+\]\$(?:Version|BuildNumber)\b|^\s*\$(?:Version|BuildNumber)\b")
+        self.assertIn("[string]$AppRepository", param_block)
+
+    def test_controller_and_workflow_dispatch_inputs_match_exactly(self):
+        root = MODULE_PATH.parents[1]
+        script = (root / "release-all.ps1").read_text(encoding="utf-8")
+        workflow = (root / "private-repo-template/.github/workflows/release-test-builds.yml").read_text(encoding="utf-8")
+        expected = {
+            "expected_commit_sha", "beta_repository", "release_notes_base64", "api_base_url",
+            "run_android", "run_web", "run_windows", "run_ios",
+        }
+        self.assertEqual(expected, validator._controller_dispatch_inputs(script))
+        self.assertEqual(expected, validator._workflow_dispatch_inputs(workflow))
+        self.assertNotIn("version", validator._workflow_dispatch_inputs(workflow))
+        self.assertNotIn("build_number", validator._workflow_dispatch_inputs(workflow))
+
+    def test_pubspec_is_the_only_release_version_authority(self):
+        root = MODULE_PATH.parents[1]
+        script = (root / "release-all.ps1").read_text(encoding="utf-8")
+        workflow = (root / "private-repo-template/.github/workflows/release-test-builds.yml").read_text(encoding="utf-8")
+        metadata = validator._workflow_job(workflow, "metadata")
+        self.assertIn("Get-FlutterReleaseMetadata", script)
+        self.assertIn("app/pubspec.yaml", script)
+        self.assertIn("exactamente una clave top-level 'version:'", script)
+        self.assertIn("app/pubspec.yaml", metadata)
+        self.assertIn("exactly one top-level 'version:'", metadata)
+        self.assertIn("release_version", metadata)
+        self.assertIn("build_number", metadata)
+
+    def test_workflow_has_four_isolated_platform_runners(self):
+        workflow = (MODULE_PATH.parents[1] / "private-repo-template/.github/workflows/release-test-builds.yml").read_text(encoding="utf-8")
+        expected = {
+            "android": "runs-on: ubuntu-latest",
+            "web": "runs-on: ubuntu-latest",
+            "windows": "runs-on: windows-latest",
+            "ios": "runs-on: macos-latest",
+        }
+        for job_name, runner in expected.items():
+            with self.subTest(job=job_name):
+                self.assertIn(runner, validator._workflow_job(workflow, job_name))
+
+    def test_all_platform_jobs_consume_metadata_outputs(self):
+        workflow = (MODULE_PATH.parents[1] / "private-repo-template/.github/workflows/release-test-builds.yml").read_text(encoding="utf-8")
+        for job_name in ("android", "web", "windows", "ios"):
+            job = validator._workflow_job(workflow, job_name)
+            with self.subTest(job=job_name):
+                self.assertIn("needs: metadata", job)
+                self.assertIn("needs.metadata.outputs.release_version", job)
+                self.assertIn("needs.metadata.outputs.build_number", job)
+
+    def test_ios_is_testflight_only_and_publication_rejects_private_material(self):
+        workflow = (MODULE_PATH.parents[1] / "private-repo-template/.github/workflows/release-test-builds.yml").read_text(encoding="utf-8")
+        ios_job = validator._workflow_job(workflow, "ios")
+        self.assertIn("build ipa --release", ios_job)
+        self.assertIn("xcrun altool --upload-app", ios_job)
+        self.assertNotIn("actions/upload-artifact", ios_job)
+        self.assertNotIn("gh release", ios_job)
+        publish_job = validator._workflow_job(workflow, "publish-public-release")
+        for marker in ("*.ipa", "*.jks", "*.p12", "*.mobileprovision", "BETA_RELEASE_TOKEN"):
+            with self.subTest(marker=marker):
+                self.assertIn(marker, publish_job)
+        self.assertNotIn("-name '*.ipa' -o -name '*.apk'", publish_job)
+        self.assertIn("! -name '*.apk' ! -name '*.zip' ! -name '*.sha256'", publish_job)
+
+    def test_github_actions_secret_reference_is_not_a_literal_secret(self):
+        self._write("safe.yml", "password: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}\n")
+        issues = validator.validate_text_safety(self.root)
+        self.assertNotIn("potential-secret", {issue.code for issue in issues})
+
+    def test_literal_assigned_secret_is_rejected(self):
+        literal = "this-is-" + "a-literal-secret"
+        assignment = "pass" + "word: " + f'"{literal}"\n'
+        self._write("unsafe.yml", assignment)
+        issues = validator.validate_text_safety(self.root)
+        self.assertIn("potential-secret", {issue.code for issue in issues})
 
     def test_ipa_is_rejected_even_when_named_as_a_test_asset(self):
         self._write("release/test-build.ipa", "not a real binary")

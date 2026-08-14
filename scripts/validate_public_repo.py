@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import subprocess
 import sys
 import xml.etree.ElementTree as ET
 from dataclasses import dataclass
@@ -36,6 +37,11 @@ REQUIRED_FILES = (
     ".github/workflows/validate.yml",
     ".github/ISSUE_TEMPLATE/bug-report.yml",
     "scripts/validate_public_repo.py",
+    "release-all.ps1",
+    "publish-android-release.ps1",
+    "private-repo-template/.github/workflows/release-test-builds.yml",
+    "private-repo-template/SECRETS.md",
+    "private-repo-template/INSTALL.md",
     "tests/test_validate_public_repo.py",
 )
 
@@ -64,6 +70,7 @@ SECRET_PATTERNS = (
         r"(?i)(?:api[_-]?key|client[_-]?secret|password|access[_-]?token)\s*[:=]\s*['\"][^'\"\s]{8,}['\"]"
     )),
 )
+GITHUB_SECRET_REFERENCE = re.compile(r"\$\{\{\s*secrets\.[A-Z][A-Z0-9_]*\s*\}\}")
 PLACEHOLDER_PATTERNS = (
     re.compile(r"\bOWNER/REPO\b", re.IGNORECASE),
     re.compile(r"\bCHANGEME\b", re.IGNORECASE),
@@ -113,10 +120,32 @@ def _issue(severity: str, code: str, path: Path | str, detail: str) -> Issue:
     return Issue(severity, code, Path(path).as_posix(), detail)
 
 
+def _git_tracked_files(root: Path) -> list[Path] | None:
+    try:
+        result = subprocess.run(
+            ["git", "-C", str(root), "ls-files", "--cached", "-z"],
+            check=False,
+            capture_output=True,
+        )
+    except OSError:
+        return None
+    if result.returncode != 0:
+        return None
+    return [root / entry.decode("utf-8") for entry in result.stdout.split(b"\0") if entry]
+
+
 def iter_repository_files(root: Path):
-    for path in sorted(root.rglob("*")):
-        if path.is_file() and ".git" not in path.relative_to(root).parts:
-            yield path
+    files = {
+        path
+        for path in root.rglob("*")
+        if path.is_file()
+        and ".git" not in path.relative_to(root).parts
+        and ".release-work" not in path.relative_to(root).parts
+    }
+    tracked_files = _git_tracked_files(root)
+    if tracked_files is not None:
+        files.update(path for path in tracked_files if path.is_file())
+    yield from sorted(files)
 
 
 def validate_required_files(root: Path) -> list[Issue]:
@@ -149,8 +178,10 @@ def validate_text_safety(root: Path) -> list[Issue]:
         except UnicodeDecodeError:
             issues.append(_issue("error", "invalid-text-encoding", path.relative_to(root), "Text file is not valid UTF-8."))
             continue
+        # A named Actions secret reference is configuration, not the secret value.
+        content_without_secret_references = GITHUB_SECRET_REFERENCE.sub("GITHUB_SECRET_REFERENCE", content)
         for label, pattern in SECRET_PATTERNS:
-            if pattern.search(content):
+            if pattern.search(content_without_secret_references):
                 issues.append(_issue("error", "potential-secret", path.relative_to(root), f"Potential {label} pattern found; matched value suppressed."))
         for pattern in PLACEHOLDER_PATTERNS:
             if pattern.search(content):
@@ -301,6 +332,100 @@ def validate_public_config(root: Path) -> list[Issue]:
     return issues
 
 
+def _workflow_job(content: str, name: str) -> str:
+    match = re.search(
+        rf"(?ms)^  {re.escape(name)}:\s*$\n(.*?)(?=^  [A-Za-z0-9_-]+:\s*$|\Z)",
+        content,
+    )
+    return match.group(1) if match else ""
+
+
+def _powershell_param_block(content: str) -> str:
+    match = re.search(r"(?ms)^param\(\s*(.*?)^\)\s*$", content)
+    return match.group(1) if match else ""
+
+
+def _workflow_dispatch_inputs(content: str) -> set[str]:
+    match = re.search(r"(?ms)^  workflow_dispatch:\s*$\n    inputs:\s*$\n(.*?)(?=^permissions:)", content)
+    if not match:
+        return set()
+    return set(re.findall(r"(?m)^      ([a-z][a-z0-9_]*):\s*$", match.group(1)))
+
+
+def _controller_dispatch_inputs(content: str) -> set[str]:
+    match = re.search(r"(?ms)^\$dispatchArguments = @\(\s*(.*?)^\)\s*$", content)
+    if not match:
+        return set()
+    return set(re.findall(r"'-f', \"([a-z][a-z0-9_]*)=", match.group(1)))
+
+
+def validate_release_control_plane(root: Path) -> list[Issue]:
+    issues = []
+    script_path = root / "release-all.ps1"
+    workflow_path = root / "private-repo-template/.github/workflows/release-test-builds.yml"
+    if not script_path.is_file() or not workflow_path.is_file():
+        return issues
+
+    script = script_path.read_text(encoding="utf-8")
+    script_markers = (
+        "SupportsShouldProcess = $true",
+        "[string]$AppRepository",
+        "AppRepositorySlug = 'wertyMSD/donde-comer'",
+        "BetaRepositorySlug = 'wertyMSD/giramesa-beta'",
+        "gh workflow run",
+        "release-test-builds.yml",
+        "app/pubspec.yaml",
+        "refs/remotes/origin/$Branch",
+        "expected_commit_sha=$headSha",
+        "$WhatIfPreference",
+    )
+    for marker in script_markers:
+        if marker not in script:
+            issues.append(_issue("error", "release-controller-contract", script_path.relative_to(root), f"Missing required controller marker: {marker}"))
+
+    param_block = _powershell_param_block(script)
+    if not param_block or re.search(r"(?im)^\s*\[[^\]]+\]\$(?:Version|BuildNumber)\b|^\s*\$(?:Version|BuildNumber)\b", param_block):
+        issues.append(_issue("error", "release-version-authority", script_path.relative_to(root), "release-all.ps1 must not declare Version or BuildNumber parameters."))
+
+    expected_inputs = {
+        "expected_commit_sha", "beta_repository", "release_notes_base64", "api_base_url",
+        "run_android", "run_web", "run_windows", "run_ios",
+    }
+    controller_inputs = _controller_dispatch_inputs(script)
+
+    workflow = workflow_path.read_text(encoding="utf-8")
+    workflow_inputs = _workflow_dispatch_inputs(workflow)
+    if controller_inputs != expected_inputs or workflow_inputs != expected_inputs:
+        issues.append(_issue("error", "workflow-dispatch-contract", workflow_path.relative_to(root), "Controller fields and workflow_dispatch inputs must match the approved non-version input set exactly."))
+    if "version:" not in _workflow_job(workflow, "metadata") or "app/pubspec.yaml" not in _workflow_job(workflow, "metadata"):
+        issues.append(_issue("error", "release-version-authority", workflow_path.relative_to(root), "The metadata job must independently parse app/pubspec.yaml after checkout."))
+
+    expected_runners = {
+        "android": "runs-on: ubuntu-latest",
+        "web": "runs-on: ubuntu-latest",
+        "windows": "runs-on: windows-latest",
+        "ios": "runs-on: macos-latest",
+    }
+    for job_name, runner in expected_runners.items():
+        job = _workflow_job(workflow, job_name)
+        if not job or runner not in job:
+            issues.append(_issue("error", "release-workflow-runner", workflow_path.relative_to(root), f"Job {job_name} must use {runner.split(': ', 1)[1]}."))
+        if "needs: metadata" not in job or "needs.metadata.outputs.release_version" not in job or "needs.metadata.outputs.build_number" not in job:
+            issues.append(_issue("error", "release-metadata-consumer", workflow_path.relative_to(root), f"Job {job_name} must consume both version and build outputs from metadata."))
+
+    ios_job = _workflow_job(workflow, "ios")
+    if "build ipa --release" not in ios_job or "xcrun altool --upload-app" not in ios_job:
+        issues.append(_issue("error", "testflight-upload", workflow_path.relative_to(root), "The iOS job must build a signed IPA and upload it directly to TestFlight."))
+    if "actions/upload-artifact" in ios_job or "gh release" in ios_job:
+        issues.append(_issue("error", "ios-public-artifact", workflow_path.relative_to(root), "The iOS job must never upload an IPA as an Actions or GitHub Release artifact."))
+
+    publish_job = _workflow_job(workflow, "publish-public-release")
+    required_public_markers = ("BETA_RELEASE_TOKEN", "*.ipa", "*.jks", "*.p12", "*.mobileprovision", "! -name '*.apk'", "! -name '*.zip'", "! -name '*.sha256'")
+    if not publish_job or any(marker not in publish_job for marker in required_public_markers):
+        issues.append(_issue("error", "public-artifact-boundary", workflow_path.relative_to(root), "The publication job must use the cross-repository token and reject IPA/signing material."))
+    return issues
+
+
 def validate_repository(root: Path) -> list[Issue]:
     checks = (
         validate_required_files,
@@ -311,6 +436,7 @@ def validate_repository(root: Path) -> list[Issue]:
         validate_html_accessibility,
         validate_manifests,
         validate_public_config,
+        validate_release_control_plane,
     )
     issues = []
     for check in checks:

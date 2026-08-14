@@ -32,3 +32,4 @@ __pycache__/
 .idea/
 .vscode/
 release-notes.md
+.release-work/
