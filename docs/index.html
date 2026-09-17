@@ -25,7 +25,7 @@
   <header class="site-header">
     <a class="brand" href="#inicio" aria-label="Giramesa, inicio"><img src="assets/wordmark.svg" alt="Giramesa" width="214" height="52"></a>
     <nav aria-label="Navegación principal">
-      <a href="#descargas">Instalar</a><a href="#pasos">Pasos</a><a href="#seguridad">Seguridad</a>
+      <a href="#descargas">Instalar</a><a href="./app/">Probar en el navegador</a><a href="#pasos">Pasos</a><a href="#seguridad">Seguridad</a>
     </nav>
   </header>
   <main id="contenido">
@@ -69,6 +69,17 @@
           <p class="platform-copy">Apple distribuye las pruebas exclusivamente mediante TestFlight. No ofrecemos archivos IPA, perfiles de instalación ni registro de UDID.</p>
           <a class="button secondary" id="ios-testflight" aria-disabled="true" tabindex="-1">TestFlight no disponible</a>
           <p class="action-note">El acceso se habilitará aquí cuando exista una invitación pública válida.</p>
+        </article>
+        <div class="table-divider" aria-hidden="true"><span></span></div>
+        <article class="platform web" id="navegador" data-platform="web" aria-labelledby="web-title">
+          <div class="place-label">
+            <img src="assets/shared-table.svg" alt="" width="46" height="46">
+            <div><p class="recommendation" hidden>Sin instalación</p><h3 id="web-title">Navegador</h3></div>
+          </div>
+          <div class="release-state" id="web-state" role="status"><span class="state-dot" aria-hidden="true"></span><span id="web-status">Versión 0.3.4 (build 10) disponible</span></div>
+          <p class="platform-copy">Probá Giramesa directo en el navegador, sin instalar nada. Los datos se guardan en el propio navegador.</p>
+          <a class="button primary" id="web-open" href="./app/">Abrir la versión navegador</a>
+          <p class="action-note">También podés descargar el <code>.zip</code> web desde la última GitHub Release.</p>
         </article>
       </div>
     </section>
