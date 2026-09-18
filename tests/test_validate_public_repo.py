@@ -36,7 +36,7 @@ class PublicRepositoryValidationTests(unittest.TestCase):
             self._write(relative)
         self._write("README.md", "# Safe repository\n")
         self._write("docs/index.html", "<!doctype html><html lang=\"es\"><title>Giramesa</title><link rel=\"stylesheet\" href=\"styles.css\"><main><h1>Giramesa</h1></main></html>")
-        self._write("docs/config.js", "window.GIRAMESA_CONFIG={githubRepository:'wertyMSD/giramesa-beta',testFlightUrl:''};")
+        self._write("docs/config.js", "window.GIRAMESA_CONFIG={githubRepository:'alfonsoautomatiza/giramesa-beta',testFlightUrl:''};")
         self._write("docs/assets/mark.svg", '<svg xmlns="http://www.w3.org/2000/svg"/>')
         manifest = {
             "version": "1.2.3",
@@ -113,7 +113,7 @@ class PublicRepositoryValidationTests(unittest.TestCase):
             "refs/remotes/origin/$Branch",
             "expected_commit_sha=$headSha",
             "AppRepositorySlug = 'wertyMSD/donde-comer'",
-            "BetaRepositorySlug = 'wertyMSD/giramesa-beta'",
+            "BetaRepositorySlug = 'alfonsoautomatiza/giramesa-beta'",
         ):
             with self.subTest(marker=marker):
                 self.assertIn(marker, script)
@@ -225,7 +225,7 @@ class PublicRepositoryValidationTests(unittest.TestCase):
         self.assertIn("apk-name", self.error_codes())
 
     def test_official_testflight_link_is_accepted(self):
-        self._write("docs/config.js", "window.GIRAMESA_CONFIG={githubRepository:'wertyMSD/giramesa-beta',testFlightUrl:'https://testflight.apple.com/join/Ab12Cd34'};")
+        self._write("docs/config.js", "window.GIRAMESA_CONFIG={githubRepository:'alfonsoautomatiza/giramesa-beta',testFlightUrl:'https://testflight.apple.com/join/Ab12Cd34'};")
         issues = validator.validate_repository(self.root)
         config_codes = {issue.code for issue in issues if "testflight" in issue.code}
         self.assertFalse(config_codes)

@@ -13,8 +13,8 @@ Este repositorio aloja el portal y las instrucciones públicas para probar Giram
 
 ## Estado actual
 
-- El repositorio local tiene el commit `c4fed8b` y `origin` apunta a `https://github.com/wertyMSD/giramesa-beta.git`.
-- El slug configurado es `wertyMSD/giramesa-beta`.
+- El repositorio local tiene el commit `c4fed8b` y `origin` apunta a `https://github.com/alfonsoautomatiza/giramesa-beta.git`.
+- El slug configurado es `alfonsoautomatiza/giramesa-beta`.
 - El estado efectivo del repositorio remoto, GitHub Pages y las Releases debe verificarse en GitHub antes de anunciar disponibilidad.
 - El enlace de TestFlight está vacío y su botón permanece deshabilitado.
 - No se incluye ningún APK o IPA.

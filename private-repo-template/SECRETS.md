@@ -1,14 +1,14 @@
 # Secrets for multiplatform test releases
 
-Configure these as **Actions repository secrets in the private application repository**. Do not configure signing credentials in `wertyMSD/giramesa-beta`, commit them, place them in workflow inputs, or paste them into release notes.
+Configure these as **Actions repository secrets in the private application repository**. Do not configure signing credentials in `alfonsoautomatiza/giramesa-beta`, commit them, place them in workflow inputs, or paste them into release notes.
 
 ## Public beta publication
 
 | Secret | Required | Purpose |
 |---|---:|---|
-| `BETA_RELEASE_TOKEN` | When Android, web, or Windows is selected | Fine-grained GitHub personal access token used only to create Releases and upload assets in `wertyMSD/giramesa-beta`. |
+| `BETA_RELEASE_TOKEN` | When Android, web, or Windows is selected | Fine-grained GitHub personal access token used only to create Releases and upload assets in `alfonsoautomatiza/giramesa-beta`. |
 
-Create the token for only `wertyMSD/giramesa-beta`, with repository permission **Contents: Read and write** and no account-wide or private-app-repository access. Give it the shortest practical expiration and rotate it before expiry. The workflow's default `GITHUB_TOKEN` is intentionally not used because it cannot write to another repository.
+Create the token for only `alfonsoautomatiza/giramesa-beta`, with repository permission **Contents: Read and write** and no account-wide or private-app-repository access. Give it the shortest practical expiration and rotate it before expiry. The workflow's default `GITHUB_TOKEN` is intentionally not used because it cannot write to another repository.
 
 ## Android signing
 

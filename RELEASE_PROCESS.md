@@ -15,7 +15,7 @@ La compilación y la firma ocurren siempre en el repositorio privado de la aplic
 
 - Windows PowerShell 5.1 o PowerShell 7 y GitHub CLI (`gh`) ya autenticado; el controlador no autentica ni acepta tokens.
 - Worktree privado local limpio en la rama elegida, con `HEAD` igual a `origin/<rama>` y al commit remoto de GitHub. El controlador no hace `fetch`, `pull`, `merge`, `commit` ni `push`.
-- Repositorio de aplicación PRIVATE `wertyMSD/donde-comer`, repositorio beta PUBLIC `wertyMSD/giramesa-beta` y workflow instalado en la rama predeterminada y en la ref elegida.
+- Repositorio de aplicación PRIVATE `wertyMSD/donde-comer`, repositorio beta PUBLIC `alfonsoautomatiza/giramesa-beta` y workflow instalado en la rama predeterminada y en la ref elegida.
 - Secretos y firma privada configurados según [private-repo-template/SECRETS.md](private-repo-template/SECRETS.md).
 - Plantilla instalada según [private-repo-template/INSTALL.md](private-repo-template/INSTALL.md). Por sí sola en este repositorio público no ejecuta nada.
 - Apple Developer Program y App Store Connect preparados. El acceso externo por TestFlight puede requerir Beta App Review de Apple.
@@ -56,7 +56,7 @@ El comando principal de publicación es:
 ./release-all.ps1 -ReleaseNotesFile ./release-notes.md -Wait
 ```
 
-El controlador deriva por defecto el worktree privado desde el directorio hermano `DONDE_COMER` (`D:\py\@android\DONDE_COMER` en el layout estándar), usa la rama `main`, la aplicación `wertyMSD/donde-comer` y el destino `wertyMSD/giramesa-beta`. `-AppRepository`, `-AppRepositorySlug`, `-Branch` y `-BetaRepositorySlug` permiten ajustar esas ubicaciones explícitamente. `-SkipAndroid`, `-SkipWeb`, `-SkipWindows` y `-SkipIos` seleccionan trabajos; no se permite omitirlos todos. `-Wait` muestra URL y estado final. `-WhatIf` completa todas las lecturas, imprime versión/build y el comando planificado, pero no ejecuta `gh workflow run`.
+El controlador deriva por defecto el worktree privado desde el directorio hermano `DONDE_COMER` (`D:\py\@android\DONDE_COMER` en el layout estándar), usa la rama `main`, la aplicación `wertyMSD/donde-comer` y el destino `alfonsoautomatiza/giramesa-beta`. `-AppRepository`, `-AppRepositorySlug`, `-Branch` y `-BetaRepositorySlug` permiten ajustar esas ubicaciones explícitamente. `-SkipAndroid`, `-SkipWeb`, `-SkipWindows` y `-SkipIos` seleccionan trabajos; no se permite omitirlos todos. `-Wait` muestra URL y estado final. `-WhatIf` completa todas las lecturas, imprime versión/build y el comando planificado, pero no ejecuta `gh workflow run`.
 
 El workflow recibe únicamente el SHA esperado, destino beta, notas codificadas, URL pública opcional y toggles de plataforma. Tras checkout, un job `metadata` verifica el SHA y vuelve a parsear de forma independiente el único `version:` top-level de `app/pubspec.yaml`; todos los jobs consumen esas mismas salidas.
 

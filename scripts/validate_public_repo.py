@@ -371,7 +371,7 @@ def validate_release_control_plane(root: Path) -> list[Issue]:
         "SupportsShouldProcess = $true",
         "[string]$AppRepository",
         "AppRepositorySlug = 'wertyMSD/donde-comer'",
-        "BetaRepositorySlug = 'wertyMSD/giramesa-beta'",
+        "BetaRepositorySlug = 'alfonsoautomatiza/giramesa-beta'",
         "gh workflow run",
         "release-test-builds.yml",
         "app/pubspec.yaml",

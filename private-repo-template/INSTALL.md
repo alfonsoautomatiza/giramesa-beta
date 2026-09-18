@@ -13,7 +13,7 @@ This template does nothing from this public repository. It must be reviewed, cop
 
 ## Repository controls
 
-- Keep the application repository private and `wertyMSD/giramesa-beta` public. The controller verifies both and never changes visibility.
+- Keep the application repository private and `alfonsoautomatiza/giramesa-beta` public. The controller verifies both and never changes visibility.
 - Protect the dispatched branch, require pull requests and successful tests, and restrict who can modify `.github/workflows/**` and signing configuration with CODEOWNERS or equivalent review rules.
 - Restrict Actions to approved actions. The template uses maintained GitHub actions plus `subosito/flutter-action`; pin action SHAs in the private copy if organization policy requires immutable action references.
 - Consider a protected GitHub environment with required reviewers for TestFlight and public Release publication.

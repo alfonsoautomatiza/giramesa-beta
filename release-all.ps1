@@ -3,7 +3,7 @@ param(
     [string]$AppRepository,
     [string]$AppRepositorySlug = 'wertyMSD/donde-comer',
     [string]$Branch = 'main',
-    [string]$BetaRepositorySlug = 'wertyMSD/giramesa-beta',
+    [string]$BetaRepositorySlug = 'alfonsoautomatiza/giramesa-beta',
     [string]$ReleaseNotesFile = (Join-Path $PSScriptRoot 'release-notes.txt'),
     [string]$ApiBaseUrl,
     [switch]$SkipAndroid,
