@@ -14,6 +14,7 @@
     const agent = navigator.userAgent.toLowerCase();
     if (/iphone|ipad|ipod/.test(agent)) return 'ios';
     if (agent.includes('android')) return 'android';
+    if (agent.includes('windows')) return 'windows';
     return null;
   }
 
@@ -33,6 +34,19 @@
     const button = document.getElementById('android-download');
     state?.classList.add('is-unavailable');
     setText('android-status', message);
+    if (button) {
+      button.removeAttribute('href');
+      button.setAttribute('aria-disabled', 'true');
+      button.setAttribute('tabindex', '-1');
+      button.textContent = 'Descarga no disponible';
+    }
+  }
+
+  function disableWindows(message) {
+    const state = document.getElementById('windows-state');
+    const button = document.getElementById('windows-download');
+    state?.classList.add('is-unavailable');
+    setText('windows-status', message);
     if (button) {
       button.removeAttribute('href');
       button.setAttribute('aria-disabled', 'true');
@@ -80,22 +94,37 @@
     return new Intl.DateTimeFormat('es', { day: 'numeric', month: 'long', year: 'numeric' }).format(date);
   }
 
-  async function loadAndroidRelease() {
+  function resolveRepository() {
     const repository = String(config.githubRepository ?? '').trim();
-    if (!repositoryPattern.test(repository)) {
+    return repositoryPattern.test(repository) ? repository : null;
+  }
+
+  let latestReleaseRequest = null;
+
+  function fetchLatestRelease(repository) {
+    latestReleaseRequest ??= fetch(`https://api.github.com/repos/${repository}/releases/latest`, {
+      headers: { Accept: 'application/vnd.github+json' },
+    }).then(async (response) => {
+      if (response.status === 404) return { notFound: true };
+      if (!response.ok) throw new Error('release-request-failed');
+      return { release: await response.json() };
+    });
+    return latestReleaseRequest;
+  }
+
+  async function loadAndroidRelease() {
+    const repository = resolveRepository();
+    if (!repository) {
       disableAndroid('El repositorio de publicaciones aún no está configurado');
       return;
     }
     try {
-      const response = await fetch(`https://api.github.com/repos/${repository}/releases/latest`, {
-        headers: { Accept: 'application/vnd.github+json' },
-      });
-      if (response.status === 404) {
+      const result = await fetchLatestRelease(repository);
+      if (result.notFound) {
         disableAndroid('Todavía no hay una publicación Android disponible');
         return;
       }
-      if (!response.ok) throw new Error('release-request-failed');
-      const release = await response.json();
+      const release = result.release;
       const assets = Array.isArray(release.assets) ? release.assets : [];
       const apk = assets.find((asset) => typeof asset.name === 'string'
         && asset.name.toLowerCase().endsWith('.apk')
@@ -133,6 +162,51 @@
     }
   }
 
+  async function loadWindowsRelease() {
+    const repository = resolveRepository();
+    if (!repository) {
+      disableWindows('El repositorio de publicaciones aún no está configurado');
+      return;
+    }
+    try {
+      const result = await fetchLatestRelease(repository);
+      if (result.notFound) {
+        disableWindows('Todavía no hay una publicación de Windows disponible');
+        return;
+      }
+      const release = result.release;
+      const assets = Array.isArray(release.assets) ? release.assets : [];
+      const zip = assets.find((asset) => typeof asset.name === 'string'
+        && /^giramesa-windows-.*\.zip$/i.test(asset.name)
+        && safeReleaseUrl(asset.browser_download_url, repository));
+      if (!zip) {
+        disableWindows('La última publicación no contiene un ZIP de Windows válido');
+        return;
+      }
+
+      const button = document.getElementById('windows-download');
+      document.getElementById('windows-state')?.classList.add('is-ready');
+      setText('windows-status', 'Última publicación de Windows disponible');
+      setText('windows-version', release.tag_name || release.name || 'Sin versión indicada');
+      setText('windows-date', formatDate(release.published_at));
+      setText('windows-file', zip.name);
+      if (button) {
+        button.href = zip.browser_download_url;
+        button.rel = 'noopener noreferrer';
+        button.removeAttribute('aria-disabled');
+        button.removeAttribute('tabindex');
+        button.textContent = `Descargar ${zip.name}`;
+      }
+
+      const notes = typeof release.body === 'string' ? release.body.trim() : '';
+      const checksum = checksumFromText(notes, zip.name)
+        ?? await checksumFromAsset({ ...release, assets }, zip, repository);
+      setText('windows-checksum', checksum ?? 'No publicado');
+    } catch {
+      disableWindows('No se pudo consultar GitHub. Probá de nuevo más tarde');
+    }
+  }
+
   function configureTestFlight() {
     const url = String(config.testFlightUrl ?? '').trim();
     if (!testFlightPattern.test(url)) return;
@@ -153,4 +227,5 @@
   markRecommendedPlatform();
   configureTestFlight();
   loadAndroidRelease();
+  loadWindowsRelease();
 })();

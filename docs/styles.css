@@ -52,8 +52,8 @@ h1 span { color: var(--green); }
 .section-heading { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, .62fr); align-items: end; gap: 3rem; margin-bottom: 4rem; }
 .section-heading h2, .trust h2 { max-width: 16ch; margin-bottom: 0; font-size: clamp(2.2rem, 4.6vw, 4.4rem); line-height: 1.02; letter-spacing: -.035em; }
 .section-heading p { max-width: 54ch; margin-bottom: 0; color: #d7e3df; }
-.platform-table { display: grid; grid-template-columns: minmax(0, 1fr) 60px minmax(0, 1fr); min-height: 560px; color: var(--ink); background: var(--paper); box-shadow: var(--shadow); }
-.platform { padding: clamp(2rem, 5vw, 4rem); }
+.platform-table { display: grid; grid-template-columns: minmax(0, 1fr) 60px minmax(0, 1fr) 60px minmax(0, 1fr); min-height: 560px; color: var(--ink); background: var(--paper); box-shadow: var(--shadow); }
+.platform { padding: clamp(2rem, 4vw, 3rem); }
 .place-label { display: flex; align-items: center; gap: 1rem; min-height: 72px; margin-bottom: 2.25rem; }
 .place-label img { flex: 0 0 auto; }
 .recommendation { margin-bottom: .15rem; color: var(--orange-dark); font-size: .78rem; font-weight: 800; letter-spacing: .03em; text-transform: uppercase; }
@@ -84,9 +84,9 @@ code { font-family: "Courier New", monospace; }
 .table-divider span { width: 12px; background: repeating-linear-gradient(to bottom, var(--paper) 0 14px, transparent 14px 28px); }
 .steps { padding: 7rem max(20px, calc((100% - 1180px) / 2)); background: var(--paper); }
 .steps .section-heading p { color: var(--muted); }
-.step-lanes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(3rem, 8vw, 8rem); }
+.step-lanes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(2.5rem, 6vw, 6rem); }
 .step-lanes section { position: relative; }
-.step-lanes section + section::before { position: absolute; top: 0; bottom: 0; left: clamp(-4rem, -4vw, -1.5rem); width: 1px; background: var(--line); content: ""; }
+.step-lanes section + section::before { position: absolute; top: 0; bottom: 0; left: calc(clamp(2.5rem, 6vw, 6rem) / -2); width: 1px; background: var(--line); content: ""; }
 .step-lanes h3 { margin-bottom: 2rem; color: var(--green-dark); font-size: 1.65rem; }
 .step-lanes ol { margin: 0 0 2rem; padding: 0; list-style: none; counter-reset: steps; }
 .step-lanes li { position: relative; min-height: 4.4rem; padding: 0 0 1.5rem 3.5rem; counter-increment: steps; }
@@ -113,6 +113,8 @@ footer div { display: flex; flex-wrap: wrap; gap: 1.25rem; }
   .platform-table { grid-template-columns: 1fr; }
   .table-divider { min-height: 46px; padding: 0; }
   .table-divider span { width: 100%; background: repeating-linear-gradient(to right, var(--paper) 0 14px, transparent 14px 28px); }
+  .step-lanes { grid-template-columns: 1fr; gap: 4rem; }
+  .step-lanes section + section::before { top: -2rem; right: 0; bottom: auto; left: 0; width: 100%; height: 1px; }
   .trust { grid-template-columns: 1fr; }
   footer { grid-template-columns: auto 1fr; }
   footer div { grid-column: 1 / -1; }
@@ -129,8 +131,6 @@ footer div { display: flex; flex-wrap: wrap; gap: 1.25rem; }
   .section-heading { margin-bottom: 2.75rem; }
   .platform { padding: 2rem 1.25rem 2.5rem; }
   .release-meta div { grid-template-columns: 5.4rem minmax(0, 1fr); gap: .6rem; }
-  .step-lanes { grid-template-columns: 1fr; gap: 4rem; }
-  .step-lanes section + section::before { top: -2rem; right: 0; bottom: auto; left: 0; width: 100%; height: 1px; }
   footer { padding: 2.5rem 16px; }
 }
 @media (prefers-reduced-motion: reduce) {

@@ -1,5 +1,4 @@
-TODO: rellenar las notas de esta release antes de ejecutar release-all.ps1
+Mantenimiento de Giramesa 0.2.1:
 
--
--
--
+- Rebuild de la 0.2.0 con misma funcionalidad: catálogo, resolución de lugares y dial de mesa
+- Sin cambios visibles para el usuario
