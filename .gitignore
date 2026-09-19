@@ -33,3 +33,7 @@ __pycache__/
 .vscode/
 release-notes.md
 .release-work/
+.atl/
+.codegraph/
+.impeccable/
+AGENTS.md
