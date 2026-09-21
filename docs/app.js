@@ -20,7 +20,8 @@
   function markRecommendedPlatform() {
     const platform = detectPlatform();
     if (!platform) return;
-    const section = document.querySelector(`[data-platform="${platform}"]`);
+    const recommendedPlatform = platform === 'ios' ? 'web' : platform;
+    const section = document.querySelector(`[data-platform="${recommendedPlatform}"]`);
     const label = section?.querySelector('.recommendation');
     if (section && label) {
       section.classList.add('is-recommended');
@@ -28,11 +29,12 @@
     }
   }
 
-  function disableAndroid(message) {
-    const state = document.getElementById('android-state');
-    const button = document.getElementById('android-download');
+  function disableRelease(platform, message) {
+    const state = document.getElementById(`${platform}-state`);
+    const button = document.getElementById(`${platform}-download`);
+    state?.classList.remove('is-ready');
     state?.classList.add('is-unavailable');
-    setText('android-status', message);
+    setText(`${platform}-status`, message);
     if (button) {
       button.removeAttribute('href');
       button.setAttribute('aria-disabled', 'true');
@@ -80,10 +82,10 @@
     return new Intl.DateTimeFormat('es', { day: 'numeric', month: 'long', year: 'numeric' }).format(date);
   }
 
-  async function loadAndroidRelease() {
+  async function loadPlatformRelease(platform, assetMatches, unavailableMessage) {
     const repository = String(config.githubRepository ?? '').trim();
     if (!repositoryPattern.test(repository)) {
-      disableAndroid('El repositorio de publicaciones aún no está configurado');
+      disableRelease(platform, 'El repositorio de publicaciones aún no está configurado');
       return;
     }
     try {
@@ -91,45 +93,64 @@
         headers: { Accept: 'application/vnd.github+json' },
       });
       if (response.status === 404) {
-        disableAndroid('Todavía no hay una publicación Android disponible');
+        disableRelease(platform, unavailableMessage);
         return;
       }
       if (!response.ok) throw new Error('release-request-failed');
       const release = await response.json();
       const assets = Array.isArray(release.assets) ? release.assets : [];
-      const apk = assets.find((asset) => typeof asset.name === 'string'
-        && asset.name.toLowerCase().endsWith('.apk')
-        && safeReleaseUrl(asset.browser_download_url, repository));
-      if (!apk) {
-        disableAndroid('La última publicación no contiene un APK válido');
+      const asset = assets.find((candidate) => typeof candidate.name === 'string'
+        && assetMatches(candidate.name.toLowerCase())
+        && safeReleaseUrl(candidate.browser_download_url, repository));
+      if (!asset) {
+        disableRelease(platform, unavailableMessage);
         return;
       }
 
-      const button = document.getElementById('android-download');
-      document.getElementById('android-state')?.classList.add('is-ready');
-      setText('android-status', 'Última publicación Android disponible');
-      setText('android-version', release.tag_name || release.name || 'Sin versión indicada');
-      setText('android-date', formatDate(release.published_at));
-      setText('android-file', apk.name);
+      const button = document.getElementById(`${platform}-download`);
+      document.getElementById(`${platform}-state`)?.classList.remove('is-unavailable');
+      document.getElementById(`${platform}-state`)?.classList.add('is-ready');
+      setText(`${platform}-status`, `Última publicación ${platform === 'android' ? 'Android' : 'Windows'} disponible`);
+      setText(`${platform}-version`, release.tag_name || release.name || 'Sin versión indicada');
+      setText(`${platform}-date`, formatDate(release.published_at));
+      setText(`${platform}-file`, asset.name);
       if (button) {
-        button.href = apk.browser_download_url;
+        button.href = asset.browser_download_url;
         button.rel = 'noopener noreferrer';
         button.removeAttribute('aria-disabled');
         button.removeAttribute('tabindex');
-        button.textContent = `Descargar ${apk.name}`;
+        button.textContent = `Descargar ${asset.name}`;
       }
 
-      const notes = typeof release.body === 'string' ? release.body.trim() : '';
-      const panel = document.getElementById('release-notes-panel');
-      if (notes && panel) {
-        setText('android-notes', notes.slice(0, 6000));
-        panel.hidden = false;
+      if (platform === 'android') {
+        const notes = typeof release.body === 'string' ? release.body.trim() : '';
+        const panel = document.getElementById('release-notes-panel');
+        if (notes && panel) {
+          setText('android-notes', notes.slice(0, 6000));
+          panel.hidden = false;
+        }
+        const checksum = checksumFromText(notes, asset.name)
+          ?? await checksumFromAsset({ ...release, assets }, asset, repository);
+        setText('android-checksum', checksum ?? 'No publicado');
       }
-      const checksum = checksumFromText(notes, apk.name)
-        ?? await checksumFromAsset({ ...release, assets }, apk, repository);
-      setText('android-checksum', checksum ?? 'No publicado');
     } catch {
-      disableAndroid('No se pudo consultar GitHub. Probá de nuevo más tarde');
+      disableRelease(platform, 'No se pudo consultar GitHub. Probá de nuevo más tarde');
+    }
+  }
+
+  async function loadWebVersion() {
+    try {
+      const response = await fetch('./app/version.json', { cache: 'no-store' });
+      if (!response.ok) throw new Error('version-request-failed');
+      const metadata = await response.json();
+      const version = String(metadata.version ?? '').trim();
+      const build = String(metadata.build_number ?? '').trim();
+      if (!version) throw new Error('version-missing');
+      setText('web-status', `Versión ${version}${build ? ` (build ${build})` : ''} disponible`);
+      setText('web-version', `${version}${build ? ` · build ${build}` : ''}`);
+    } catch {
+      setText('web-status', 'Lista para usar, sin instalación');
+      setText('web-version', 'Versión actual');
     }
   }
 
@@ -152,5 +173,7 @@
 
   markRecommendedPlatform();
   configureTestFlight();
-  loadAndroidRelease();
+  loadWebVersion();
+  loadPlatformRelease('android', (name) => name.endsWith('.apk'), 'Todavía no hay una publicación Android disponible');
+  loadPlatformRelease('windows', (name) => name.includes('windows') && name.endsWith('.zip'), 'Todavía no hay una publicación Windows disponible');
 })();
