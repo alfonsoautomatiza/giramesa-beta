@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Giramesa Favicon — Tragaperras Culinaria Desalineada en Giro -->
+  <!-- Token: teal-dark #103F36 -->
+  <rect width="64" height="64" rx="14" fill="#103F36"/>
+
+  <!-- 3 Vertical Reel Windows in paper #F5F1E8 -->
+  <rect x="7" y="10" width="14" height="44" rx="4" fill="#F5F1E8"/>
+  <rect x="25" y="10" width="14" height="44" rx="4" fill="#F5F1E8"/>
+  <rect x="43" y="10" width="14" height="44" rx="4" fill="#F5F1E8"/>
+
+  <!-- Horizontal Payline in Orange #F4A261 -->
+  <line x1="5" y1="32" x2="59" y2="32" stroke="#F4A261" stroke-width="4.5" stroke-linecap="round"/>
+
+  <!-- Reel 1: Cuchara desplazada hacia arriba -->
+  <ellipse cx="14" cy="21" rx="2.5" ry="4" fill="#103F36"/>
+  <line x1="14" y1="25" x2="14" y2="34" stroke="#103F36" stroke-width="1.8" stroke-linecap="round"/>
+
+  <!-- Reel 2: Tenedor centrado en la payline -->
+  <path d="M 29 22 L 29 27 C 29 29 35 29 35 27 L 35 22" stroke="#103F36" stroke-width="1.4" fill="none"/>
+  <line x1="32" y1="22" x2="32" y2="27" stroke="#103F36" stroke-width="1.4"/>
+  <line x1="32" y1="29" x2="32" y2="41" stroke="#103F36" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Reel 3: Cuchillo desplazado hacia abajo -->
+  <path d="M 49 26 C 52 28 52 33 49 33 Z" fill="#103F36"/>
+  <line x1="49" y1="33" x2="49" y2="43" stroke="#103F36" stroke-width="1.8" stroke-linecap="round"/>
+</svg>

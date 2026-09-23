@@ -1,6 +1,6 @@
 {
-    "name": "giramesa",
-    "short_name": "giramesa",
+    "name": "#giramesa",
+    "short_name": "#giramesa",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
