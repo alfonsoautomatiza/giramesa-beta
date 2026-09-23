@@ -1,6 +1,6 @@
 {
-  "build_number": 31,
+  "build_number": 32,
   "name": "giramesa-web",
-  "source_commit": "b1127a3d5e424de4667fb091809857412fc660ba",
-  "version": "0.3.25"
+  "source_commit": "e0f05dd8b3d3742ab6a8bd2ebb26683737871619",
+  "version": "0.3.26"
 }
