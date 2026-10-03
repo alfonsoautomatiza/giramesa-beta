@@ -1,12 +1,16 @@
 {
-    "name": "#giramesa",
-    "short_name": "#giramesa",
-    "start_url": ".",
+    "name": "giramesa",
+    "short_name": "giramesa",
+    "description": "Decide dónde comer en grupo con una ruleta y guarda la memoria del grupo.",
+    "lang": "es",
+    "start_url": "./?source=pwa",
+    "scope": "./",
+    "id": "./",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
     "orientation": "portrait-primary",
+    "background_color": "#F5F1E8",
+    "theme_color": "#146356",
+    "categories": ["food", "lifestyle"],
     "prefer_related_applications": false,
     "icons": [
         {
