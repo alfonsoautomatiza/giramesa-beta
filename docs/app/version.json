@@ -1,6 +1,1 @@
-{
-  "build_number": 49,
-  "name": "giramesa-web",
-  "source_commit": "f7231fbccb351f095117f5f4317b4f2aed7fc0e0",
-  "version": "0.3.43"
-}
+{"app_name":"giramesa","version":"0.3.44","build_number":"50","package_name":"giramesa"}
