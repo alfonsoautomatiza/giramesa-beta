@@ -17,7 +17,7 @@
   <header class="site-header">
     <a class="brand" href="#inicio" aria-label="Giramesa, inicio"><img src="assets/wordmark.svg" alt="Giramesa" width="214" height="52"></a>
     <nav aria-label="Navegación principal">
-      <a href="#descargas">Instalar</a><a href="./app/">Probar en el navegador</a><a href="#pasos">Pasos</a><a href="#seguridad">Seguridad</a>
+      <a href="#descargas">Instalar</a><a href="./app/">Probar en el navegador</a><a href="#historial">Historial</a><a href="#pasos">Pasos</a><a href="#seguridad">Seguridad</a>
     </nav>
   </header>
   <main id="contenido">
@@ -98,6 +98,12 @@
         <p>¿Algo no funcionó al instalar o usar Giramesa? Contanos qué pasó y quedará registrado como incidencia pública en el repositorio.</p>
         <a class="button primary" href="https://github.com/alfonsoautomatiza/giramesa-beta/issues/new?template=bug-report.yml" rel="noopener noreferrer">Comunicar un problema</a>
       </div>
+    </section>
+    <section class="history" id="historial" aria-labelledby="history-title" aria-busy="true">
+      <div class="section-heading compact"><h2 id="history-title">Historial de versiones</h2><p>Todas las publicaciones públicas de prueba, de la más reciente a la más antigua. Las notas se muestran como texto simple.</p></div>
+      <p class="history-status" id="release-history-status" role="status" aria-live="polite" data-state="loading">Consultando el historial de publicaciones…</p>
+      <ol class="history-list" id="release-history-list" aria-labelledby="history-title"></ol>
+      <a class="doc-link" href="https://github.com/alfonsoautomatiza/giramesa-beta/releases" rel="noopener noreferrer">Ver todas las publicaciones en GitHub</a>
     </section>
     <section class="steps" id="pasos" aria-labelledby="steps-title">
       <div class="section-heading compact"><h2 id="steps-title">Elegí tu camino</h2><p>La web te deja empezar en segundos. Las versiones instalables agregan un acceso directo para el dispositivo que usás todos los días.</p></div>

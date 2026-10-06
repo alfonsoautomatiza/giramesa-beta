@@ -138,6 +138,128 @@
     }
   }
 
+  const HISTORY_PAGE_SIZE = 30;
+  const HISTORY_MAX_PAGES = 4;
+  const HISTORY_MAX_ITEMS = 100;
+  const HISTORY_NOTES_LENGTH = 280;
+
+  function safeReleasePageUrl(url, repository) {
+    try {
+      const parsed = new URL(url);
+      return parsed.protocol === 'https:' && parsed.hostname === 'github.com'
+        && !parsed.username && !parsed.password && !parsed.port
+        && parsed.pathname.toLowerCase().startsWith(`/${repository.toLowerCase()}/releases/tag/`)
+        ? parsed.href : null;
+    } catch {
+      return null;
+    }
+  }
+
+  function conciseNotes(body) {
+    const text = typeof body === 'string' ? body.replace(/\s+/g, ' ').trim() : '';
+    return text.length > HISTORY_NOTES_LENGTH ? `${text.slice(0, HISTORY_NOTES_LENGTH).trimEnd()}…` : text;
+  }
+
+  function setHistoryStatus(message, state) {
+    const status = document.getElementById('release-history-status');
+    if (!status) return;
+    status.textContent = message;
+    status.dataset.state = state;
+    status.hidden = !message;
+    document.getElementById('historial')?.setAttribute('aria-busy', 'false');
+  }
+
+  function renderRelease(release, repository) {
+    const item = document.createElement('li');
+    item.className = 'history-item';
+    const title = document.createElement('h3');
+    title.textContent = String(release.name || release.tag_name || 'Versión sin nombre').slice(0, 120);
+    const meta = document.createElement('p');
+    meta.className = 'history-meta';
+    const tag = String(release.tag_name ?? '').slice(0, 80);
+    meta.textContent = [tag, formatDate(release.published_at), release.prerelease ? 'Pre-publicación' : 'Publicación estable']
+      .filter(Boolean).join(' · ');
+    item.append(title, meta);
+    const notes = conciseNotes(release.body);
+    if (notes) {
+      const paragraph = document.createElement('p');
+      paragraph.className = 'history-notes';
+      paragraph.textContent = notes;
+      item.append(paragraph);
+    }
+    const href = safeReleasePageUrl(release.html_url, repository);
+    if (href) {
+      const link = document.createElement('a');
+      link.className = 'doc-link';
+      link.href = href;
+      link.rel = 'noopener noreferrer';
+      link.textContent = `Ver ${tag || 'la publicación'} en GitHub`;
+      item.append(link);
+    }
+    return item;
+  }
+
+  async function loadReleaseHistory() {
+    const list = document.getElementById('release-history-list');
+    if (!list) return;
+    const repository = String(config.githubRepository ?? '').trim();
+    if (!repositoryPattern.test(repository)) {
+      setHistoryStatus('El repositorio de publicaciones aún no está configurado', 'unavailable');
+      return;
+    }
+    const seen = new Set();
+    const releases = [];
+    let exhausted = false;
+    let rateLimited = false;
+    try {
+      for (let page = 1; page <= HISTORY_MAX_PAGES && !exhausted; page += 1) {
+        const response = await fetch(`https://api.github.com/repos/${repository}/releases?per_page=${HISTORY_PAGE_SIZE}&page=${page}`, {
+          headers: { Accept: 'application/vnd.github+json' },
+        });
+        if (response.status === 403 || response.status === 429) {
+          if (releases.length) {
+            rateLimited = true;
+            break;
+          }
+          setHistoryStatus('GitHub alcanzó el límite de consultas. Probá de nuevo en unos minutos o mirá el historial directamente en GitHub', 'unavailable');
+          return;
+        }
+        if (!response.ok) throw new Error('history-request-failed');
+        const batch = await response.json();
+        if (!Array.isArray(batch)) throw new Error('history-invalid');
+        for (const release of batch) {
+          if (!release || typeof release !== 'object' || release.draft === true) continue;
+          const key = release.id ?? release.tag_name;
+          if (key === undefined || seen.has(key)) continue;
+          seen.add(key);
+          releases.push(release);
+        }
+        exhausted = batch.length < HISTORY_PAGE_SIZE;
+      }
+    } catch {
+      if (!releases.length) {
+        setHistoryStatus('No se pudo consultar el historial en GitHub. Probá de nuevo más tarde', 'unavailable');
+        return;
+      }
+    }
+    if (!releases.length) {
+      setHistoryStatus('Todavía no hay publicaciones en el historial', 'empty');
+      return;
+    }
+    const time = (release) => Date.parse(release.published_at ?? release.created_at ?? '') || 0;
+    releases.sort((a, b) => time(b) - time(a));
+    const shown = releases.slice(0, HISTORY_MAX_ITEMS);
+    list.replaceChildren(...shown.map((release) => renderRelease(release, repository)));
+    const truncated = !exhausted || releases.length > shown.length;
+    if (rateLimited) {
+      setHistoryStatus(`Historial parcial: GitHub alcanzó el límite de consultas tras ${shown.length} publicaciones. Probá de nuevo en unos minutos o mirá el historial completo en GitHub`, 'partial');
+      return;
+    }
+    setHistoryStatus(truncated
+      ? `Mostrando las ${shown.length} publicaciones más recientes. El historial completo está en GitHub`
+      : `${shown.length} ${shown.length === 1 ? 'publicación' : 'publicaciones'} en el historial`, 'ready');
+  }
+
   async function loadWebVersion() {
     try {
       const response = await fetch('./app/version.json', { cache: 'no-store' });
@@ -174,6 +296,7 @@
   markRecommendedPlatform();
   configureTestFlight();
   loadWebVersion();
+  loadReleaseHistory();
   loadPlatformRelease('android', (name) => name.endsWith('.apk'), 'Todavía no hay una publicación Android disponible');
   loadPlatformRelease('windows', (name) => name.includes('windows') && name.endsWith('.zip'), 'Todavía no hay una publicación Windows disponible');
 })();
