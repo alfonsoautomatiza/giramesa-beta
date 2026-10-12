@@ -1,6 +1,6 @@
 {
-    "name": "giramesa",
-    "short_name": "giramesa",
+    "name": "giromesa",
+    "short_name": "giromesa",
     "description": "Decide dónde comer en grupo con una ruleta y guarda la memoria del grupo.",
     "lang": "es",
     "start_url": "./?source=pwa",

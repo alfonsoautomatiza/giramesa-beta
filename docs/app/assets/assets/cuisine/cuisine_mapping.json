@@ -1,0 +1,466 @@
+{
+  "fallback": {
+    "label": "General",
+    "asset": "general.svg"
+  },
+  "canonical": {
+    "italiana": {
+      "label": "Italiana",
+      "asset": "italiana.svg"
+    },
+    "espanola": {
+      "label": "Española",
+      "asset": "espanola.svg"
+    },
+    "mexicana": {
+      "label": "Mexicana",
+      "asset": "mexicana.svg"
+    },
+    "china": {
+      "label": "China",
+      "asset": "china.svg"
+    },
+    "japonesa": {
+      "label": "Japonesa",
+      "asset": "japonesa.svg"
+    },
+    "india": {
+      "label": "India",
+      "asset": "india.svg"
+    },
+    "tailandesa": {
+      "label": "Tailandesa",
+      "asset": "tailandesa.svg"
+    },
+    "francesa": {
+      "label": "Francesa",
+      "asset": "francesa.svg"
+    },
+    "americana": {
+      "label": "Americana",
+      "asset": "americana.svg"
+    },
+    "argentina": {
+      "label": "Argentina",
+      "asset": "argentina.svg"
+    },
+    "brasilena": {
+      "label": "Brasileña",
+      "asset": "brasilena.svg"
+    },
+    "parrilla": {
+      "label": "Parrilla",
+      "asset": "parrilla.svg"
+    },
+    "pizza": {
+      "label": "Pizza",
+      "asset": "pizza.svg"
+    },
+    "burguesa": {
+      "label": "Burguesa",
+      "asset": "burguesa.svg"
+    },
+    "sushi": {
+      "label": "Sushi",
+      "asset": "sushi.svg"
+    },
+    "vegetariana": {
+      "label": "Vegetariana",
+      "asset": "vegetariana.svg"
+    },
+    "vegana": {
+      "label": "Vegana",
+      "asset": "vegana.svg"
+    },
+    "mediterranea": {
+      "label": "Mediterránea",
+      "asset": "mediterranea.svg"
+    },
+    "arabe": {
+      "label": "Árabe",
+      "asset": "arabe.svg"
+    },
+    "peruana": {
+      "label": "Peruana",
+      "asset": "peruana.svg"
+    },
+    "asiatica": {
+      "label": "Asiática",
+      "asset": "asiatica.svg"
+    },
+    "fast food": {
+      "label": "Fast food",
+      "asset": "fast-food.svg"
+    },
+    "latinoamericana": {
+      "label": "Latinoamericana",
+      "asset": "latinoamericana.svg"
+    },
+    "mar y pescado": {
+      "label": "Mar y pescado",
+      "asset": "mar-y-pescado.svg"
+    },
+    "casera": {
+      "label": "Casera",
+      "asset": "casera.svg"
+    },
+    "gallega": {
+      "label": "Gallega",
+      "asset": "gallega.svg"
+    },
+    "asturiana": {
+      "label": "Asturiana",
+      "asset": "asturiana.svg"
+    },
+    "vasca": {
+      "label": "Vasca",
+      "asset": "vasca.svg"
+    },
+    "madrilena": {
+      "label": "Madrileña",
+      "asset": "madrilena.svg"
+    },
+    "otra": {
+      "label": "Otra",
+      "asset": "otra.svg"
+    },
+    "general": {
+      "label": "General",
+      "asset": "general.svg"
+    }
+  },
+  "aliases": {
+    "spanish": {
+      "label": "Española",
+      "asset": "espanola.svg"
+    },
+    "tapas": {
+      "label": "Española",
+      "asset": "espanola.svg"
+    },
+    "paellas": {
+      "label": "Española",
+      "asset": "espanola.svg"
+    },
+    "italian": {
+      "label": "Italiana",
+      "asset": "italiana.svg"
+    },
+    "italian pizza": {
+      "label": "Italiana",
+      "asset": "italiana.svg"
+    },
+    "burger": {
+      "label": "Burguesa",
+      "asset": "burguesa.svg"
+    },
+    "mexican": {
+      "label": "Mexicana",
+      "asset": "mexicana.svg"
+    },
+    "chinese": {
+      "label": "Asiática",
+      "asset": "asiatica.svg"
+    },
+    "asian": {
+      "label": "Asiática",
+      "asset": "asiatica.svg"
+    },
+    "vietnamese": {
+      "label": "Asiática",
+      "asset": "asiatica.svg"
+    },
+    "noodle": {
+      "label": "Asiática",
+      "asset": "asiatica.svg"
+    },
+    "indonesian": {
+      "label": "Asiática",
+      "asset": "asiatica.svg"
+    },
+    "malaysian": {
+      "label": "Asiática",
+      "asset": "asiatica.svg"
+    },
+    "hotpot": {
+      "label": "Asiática",
+      "asset": "asiatica.svg"
+    },
+    "japanese": {
+      "label": "Japonesa",
+      "asset": "japonesa.svg"
+    },
+    "indian": {
+      "label": "India",
+      "asset": "india.svg"
+    },
+    "hindu": {
+      "label": "India",
+      "asset": "india.svg"
+    },
+    "nepalese": {
+      "label": "India",
+      "asset": "india.svg"
+    },
+    "bangladeshi": {
+      "label": "India",
+      "asset": "india.svg"
+    },
+    "peruvian": {
+      "label": "Peruana",
+      "asset": "peruana.svg"
+    },
+    "chifa": {
+      "label": "Peruana",
+      "asset": "peruana.svg"
+    },
+    "ceviche": {
+      "label": "Peruana",
+      "asset": "peruana.svg"
+    },
+    "argentinian": {
+      "label": "Argentina",
+      "asset": "argentina.svg"
+    },
+    "argentine": {
+      "label": "Argentina",
+      "asset": "argentina.svg"
+    },
+    "brazilian": {
+      "label": "Brasileña",
+      "asset": "brasilena.svg"
+    },
+    "arab": {
+      "label": "Árabe",
+      "asset": "arabe.svg"
+    },
+    "lebanese": {
+      "label": "Árabe",
+      "asset": "arabe.svg"
+    },
+    "middle eastern": {
+      "label": "Árabe",
+      "asset": "arabe.svg"
+    },
+    "turkish": {
+      "label": "Árabe",
+      "asset": "arabe.svg"
+    },
+    "persian": {
+      "label": "Árabe",
+      "asset": "arabe.svg"
+    },
+    "iranian": {
+      "label": "Árabe",
+      "asset": "arabe.svg"
+    },
+    "israeli": {
+      "label": "Árabe",
+      "asset": "arabe.svg"
+    },
+    "egyptian": {
+      "label": "Árabe",
+      "asset": "arabe.svg"
+    },
+    "mediterranean": {
+      "label": "Mediterránea",
+      "asset": "mediterranea.svg"
+    },
+    "french": {
+      "label": "Francesa",
+      "asset": "francesa.svg"
+    },
+    "breton": {
+      "label": "Francesa",
+      "asset": "francesa.svg"
+    },
+    "american": {
+      "label": "Americana",
+      "asset": "americana.svg"
+    },
+    "brunch": {
+      "label": "Americana",
+      "asset": "americana.svg"
+    },
+    "breakfast": {
+      "label": "Americana",
+      "asset": "americana.svg"
+    },
+    "crepe": {
+      "label": "Americana",
+      "asset": "americana.svg"
+    },
+    "crepes": {
+      "label": "Americana",
+      "asset": "americana.svg"
+    },
+    "steak house": {
+      "label": "Parrilla",
+      "asset": "parrilla.svg"
+    },
+    "barbecue": {
+      "label": "Parrilla",
+      "asset": "parrilla.svg"
+    },
+    "grill": {
+      "label": "Parrilla",
+      "asset": "parrilla.svg"
+    },
+    "meat": {
+      "label": "Parrilla",
+      "asset": "parrilla.svg"
+    },
+    "galician": {
+      "label": "Gallega",
+      "asset": "gallega.svg"
+    },
+    "asturian": {
+      "label": "Asturiana",
+      "asset": "asturiana.svg"
+    },
+    "basque": {
+      "label": "Vasca",
+      "asset": "vasca.svg"
+    },
+    "sandwich": {
+      "label": "Fast food",
+      "asset": "fast-food.svg"
+    },
+    "kebab": {
+      "label": "Fast food",
+      "asset": "fast-food.svg"
+    },
+    "chicken": {
+      "label": "Fast food",
+      "asset": "fast-food.svg"
+    },
+    "burrito": {
+      "label": "Fast food",
+      "asset": "fast-food.svg"
+    },
+    "diner": {
+      "label": "Fast food",
+      "asset": "fast-food.svg"
+    },
+    "colombian": {
+      "label": "Latinoamericana",
+      "asset": "latinoamericana.svg"
+    },
+    "columbian": {
+      "label": "Latinoamericana",
+      "asset": "latinoamericana.svg"
+    },
+    "venezuelan": {
+      "label": "Latinoamericana",
+      "asset": "latinoamericana.svg"
+    },
+    "cuban": {
+      "label": "Latinoamericana",
+      "asset": "latinoamericana.svg"
+    },
+    "latin": {
+      "label": "Latinoamericana",
+      "asset": "latinoamericana.svg"
+    },
+    "hondurean": {
+      "label": "Latinoamericana",
+      "asset": "latinoamericana.svg"
+    },
+    "nicaraguan": {
+      "label": "Latinoamericana",
+      "asset": "latinoamericana.svg"
+    },
+    "paraguayan": {
+      "label": "Latinoamericana",
+      "asset": "latinoamericana.svg"
+    },
+    "dominican": {
+      "label": "Latinoamericana",
+      "asset": "latinoamericana.svg"
+    },
+    "ecuadorian": {
+      "label": "Latinoamericana",
+      "asset": "latinoamericana.svg"
+    },
+    "ecuatorian": {
+      "label": "Latinoamericana",
+      "asset": "latinoamericana.svg"
+    },
+    "latin american": {
+      "label": "Latinoamericana",
+      "asset": "latinoamericana.svg"
+    },
+    "fish": {
+      "label": "Mar y pescado",
+      "asset": "mar-y-pescado.svg"
+    },
+    "seafood": {
+      "label": "Mar y pescado",
+      "asset": "mar-y-pescado.svg"
+    },
+    "regional": {
+      "label": "Casera",
+      "asset": "casera.svg"
+    },
+    "local": {
+      "label": "Casera",
+      "asset": "casera.svg"
+    },
+    "traditional": {
+      "label": "Casera",
+      "asset": "casera.svg"
+    },
+    "international": {
+      "label": "Casera",
+      "asset": "casera.svg"
+    },
+    "croquetas": {
+      "label": "Casera",
+      "asset": "casera.svg"
+    },
+    "arepa": {
+      "label": "Casera",
+      "asset": "casera.svg"
+    },
+    "cachapa": {
+      "label": "Casera",
+      "asset": "casera.svg"
+    },
+    "rice and fish": {
+      "label": "Casera",
+      "asset": "casera.svg"
+    },
+    "pasta": {
+      "label": "Casera",
+      "asset": "casera.svg"
+    },
+    "soup": {
+      "label": "Casera",
+      "asset": "casera.svg"
+    },
+    "fusion": {
+      "label": "Casera",
+      "asset": "casera.svg"
+    },
+    "deli": {
+      "label": "Casera",
+      "asset": "casera.svg"
+    },
+    "coffee shop": {
+      "label": "Casera",
+      "asset": "casera.svg"
+    },
+    "fine dining": {
+      "label": "Casera",
+      "asset": "casera.svg"
+    },
+    "fondue": {
+      "label": "Casera",
+      "asset": "casera.svg"
+    },
+    "ethiopian": {
+      "label": "General",
+      "asset": "general.svg"
+    }
+  }
+}
