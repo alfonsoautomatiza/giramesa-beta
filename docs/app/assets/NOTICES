@@ -1809,7 +1809,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 --------------------------------------------------------------------------------
 cross_file
-cupertino_ui
 flutter_plugin_android_lifecycle
 google_fonts
 google_maps_flutter
@@ -1819,7 +1818,6 @@ google_maps_flutter_platform_interface
 google_sign_in_android
 google_sign_in_ios
 google_sign_in_web
-material_ui
 path_provider
 path_provider_android
 path_provider_foundation
