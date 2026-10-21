@@ -1,1 +1,38 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" data-cuisine="vasca"><title>pintxos</title><rect width="160" height="160" rx="24" fill="#3D6E78"/><path d="M52 105h56M61 105V67M80 105V58M99 105V67" stroke="#F5F1E8" stroke-width="8" stroke-linecap="round"/><circle cx="61" cy="60" r="11" fill="#D95D39"/><circle cx="80" cy="51" r="11" fill="#B8862B"/><circle cx="99" cy="60" r="11" fill="#2A9D8F"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" data-cuisine="vasca">
+<title>Pintxo vasco</title>
+<defs>
+<clipPath id="flag-clip-es_pv"><rect width="38" height="16" rx="4"/></clipPath>
+</defs>
+<rect width="160" height="160" rx="24" fill="#15803D"/>
+<g filter="drop-shadow(0 4px 10px rgba(0,0,0,0.25))">
+<!-- Sticker outline -->
+<path d="M42 114 C42 98 118 98 118 114 Z M78 52 L82 52 L82 108 L78 108 Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="8" stroke-linejoin="round"/>
+<!-- Toothpick / skewer -->
+<rect x="79" y="52" width="3" height="60" fill="#B45309"/>
+<!-- Crusty baguette slice -->
+<path d="M44 114 C44 100 116 100 116 114 Z" fill="#D97706"/>
+<path d="M48 112 C48 104 112 104 112 112 Z" fill="#FDE68A"/>
+<!-- Green guindilla pepper -->
+<path d="M64 96 Q80 88 96 96" stroke="#16A34A" stroke-width="7" stroke-linecap="round" fill="none"/>
+<!-- Boqueron / anchovy strip -->
+<path d="M60 88 Q80 94 100 88" stroke="#94A3B8" stroke-width="6" stroke-linecap="round" fill="none"/>
+<!-- Green Manzanilla olive on top -->
+<circle cx="80" cy="74" r="9" fill="#65A30D"/>
+<circle cx="80" cy="74" r="7" fill="#84CC16"/>
+<circle cx="80" cy="74" r="3" fill="#DC2626"/>
+</g>
+<g class="flag-badge" transform="translate(14,14)">
+<rect width="38" height="16" rx="4" fill="#0F172A" opacity="0.6"/>
+<g clip-path="url(#flag-clip-es_pv)">
+<rect x="0" y="0" width="18" height="4" fill="#AA151B"/>
+<rect x="0" y="4" width="18" height="8" fill="#F1BF00"/>
+<rect x="0" y="12" width="18" height="4" fill="#AA151B"/>
+<line x1="18.5" y1="0" x2="18.5" y2="16" stroke="#FFFFFF" stroke-width="1"/>
+<rect x="19" y="0" width="19" height="16" fill="#D91023"/>
+<path d="M19,0 L22.5,0 L38,12 L38,16 L34.5,16 L19,4 Z M38,0 L34.5,0 L19,12 L19,16 L22.5,16 L38,4 Z" fill="#009246"/>
+<rect x="27.1" y="0" width="2.8" height="16" fill="#FFFFFF"/>
+<rect x="19" y="6.6" width="19" height="2.8" fill="#FFFFFF"/>
+</g>
+<rect width="38" height="16" rx="4" fill="none" stroke="#FFFFFF" stroke-width="1.5"/>
+</g>
+</svg>

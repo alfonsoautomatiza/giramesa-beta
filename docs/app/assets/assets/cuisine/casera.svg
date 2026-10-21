@@ -1,1 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" data-cuisine="casera"><title>home cooking</title><rect width="160" height="160" rx="24" fill="#9A7B4F"/><path d="M47 77h66v38H47z" fill="#F5F1E8"/><path d="m41 77 39-35 39 35" fill="none" stroke="#103F36" stroke-width="8"/><circle cx="80" cy="96" r="10" fill="#D95D39"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" data-cuisine="casera">
+<title>Cazuela de comida casera</title>
+<defs>
+
+</defs>
+<rect width="160" height="160" rx="24" fill="#C2410C"/>
+<g filter="drop-shadow(0 4px 10px rgba(0,0,0,0.25))">
+<!-- Sticker outline -->
+<ellipse cx="80" cy="94" rx="44" ry="26" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="8"/>
+<path d="M44 68 L104 114" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round"/>
+<!-- Dutch oven casserole pot -->
+<path d="M38 92 L38 106 C38 122 122 122 122 106 L122 92 Z" fill="#991B1B"/>
+<ellipse cx="80" cy="92" rx="42" ry="22" fill="#B91C1C"/>
+<!-- Rich simmering stew -->
+<ellipse cx="80" cy="90" rx="38" ry="18" fill="#D97706"/>
+<circle cx="64" cy="90" r="4" fill="#F97316"/>
+<circle cx="76" cy="86" r="3.5" fill="#15803D"/>
+<circle cx="86" cy="92" r="4" fill="#FEF08A"/>
+<!-- Wooden stirring spoon -->
+<path d="M46 64 L100 110" stroke="#78350F" stroke-width="4.5" stroke-linecap="round"/>
+<ellipse cx="46" cy="64" rx="7" ry="5" fill="#92400E" transform="rotate(-40 46 64)"/>
+</g>
+
+</svg>

@@ -1,1 +1,35 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" data-cuisine="peruana"><title>ceviche</title><rect width="160" height="160" rx="24" fill="#B85C38"/><path d="M45 77q35 52 70 0" fill="#F5F1E8"/><path d="M52 77h56" stroke="#103F36" stroke-width="7"/><circle cx="67" cy="67" r="6" fill="#2A9D8F"/><circle cx="94" cy="65" r="6" fill="#F4A261"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" data-cuisine="peruana">
+<title>Ceviche peruano</title>
+<defs>
+<clipPath id="flag-clip-pe"><rect width="26" height="18" rx="4"/></clipPath>
+</defs>
+<rect width="160" height="160" rx="24" fill="#D97706"/>
+<g filter="drop-shadow(0 4px 10px rgba(0,0,0,0.25))">
+<!-- Sticker outline -->
+<ellipse cx="80" cy="88" rx="44" ry="34" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="8"/>
+<!-- Ceramic bowl -->
+<path d="M38 86 C38 120 122 120 122 86 Z" fill="#0F766E"/>
+<ellipse cx="80" cy="86" rx="42" ry="22" fill="#115E59"/>
+<!-- Leche de tigre & fish cubes -->
+<ellipse cx="80" cy="84" rx="38" ry="18" fill="#F8FAFC"/>
+<rect x="62" y="76" width="10" height="8" rx="2" fill="#E2E8F0"/>
+<rect x="76" y="80" width="12" height="9" rx="2" fill="#FFFFFF"/>
+<rect x="90" y="78" width="10" height="8" rx="2" fill="#E2E8F0"/>
+<!-- Red onion julienne -->
+<path d="M58 84 Q70 78 78 86" stroke="#9333EA" stroke-width="3" fill="none"/>
+<path d="M76 86 Q86 80 96 88" stroke="#9333EA" stroke-width="3" fill="none"/>
+<!-- Cilantro & sweet potato -->
+<circle cx="72" cy="82" r="2" fill="#16A34A"/>
+<circle cx="86" cy="84" r="2" fill="#16A34A"/>
+<ellipse cx="50" cy="86" rx="6" ry="8" fill="#EA580C"/>
+</g>
+<g class="flag-badge" transform="translate(14,14)">
+<rect width="26" height="18" rx="4" fill="#0F172A" opacity="0.6"/>
+<g clip-path="url(#flag-clip-pe)">
+<rect width="8.67" height="18" fill="#D91023"/>
+<rect x="8.67" width="8.67" height="18" fill="#FFFFFF"/>
+<rect x="17.33" width="8.67" height="18" fill="#D91023"/>
+</g>
+<rect width="26" height="18" rx="4" fill="none" stroke="#FFFFFF" stroke-width="1.5"/>
+</g>
+</svg>

@@ -1,1 +1,34 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" data-cuisine="japonesa"><title>japonesa</title><rect width="160" height="160" rx="24" fill="#3F5E6B"/><rect x="48" y="55" width="64" height="55" rx="12" fill="#103F36"/><rect x="57" y="64" width="46" height="37" rx="8" fill="#F5F1E8"/><circle cx="80" cy="82" r="12" fill="#E76F51"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" data-cuisine="japonesa">
+<title>Ramen japones</title>
+<defs>
+<clipPath id="flag-clip-jp"><rect width="26" height="18" rx="4"/></clipPath>
+</defs>
+<rect width="160" height="160" rx="24" fill="#E11D48"/>
+<g filter="drop-shadow(0 4px 10px rgba(0,0,0,0.25))">
+<!-- Sticker outline -->
+<ellipse cx="80" cy="88" rx="44" ry="34" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="8"/>
+<!-- Black ceramic bowl -->
+<path d="M38 84 C38 122 122 122 122 84 Z" fill="#0F172A"/>
+<ellipse cx="80" cy="84" rx="42" ry="24" fill="#1E293B"/>
+<!-- Broth & Noodles -->
+<ellipse cx="80" cy="84" rx="38" ry="20" fill="#F59E0B"/>
+<path d="M52 80 Q64 74 76 80 Q88 86 100 80" stroke="#FDE68A" stroke-width="3" fill="none"/>
+<path d="M56 86 Q68 80 80 86 Q92 92 104 86" stroke="#FDE68A" stroke-width="3" fill="none"/>
+<!-- Nori square -->
+<rect x="46" y="66" width="16" height="22" rx="2" transform="rotate(-15 54 77)" fill="#14532D"/>
+<!-- Egg half -->
+<ellipse cx="94" cy="84" rx="10" ry="13" transform="rotate(20 94 84)" fill="#FFFFFF"/>
+<circle cx="94" cy="84" r="6.5" fill="#F97316"/>
+<!-- Scallions -->
+<circle cx="74" cy="84" r="2.5" fill="#22C55E"/>
+<circle cx="80" cy="90" r="2.5" fill="#22C55E"/>
+</g>
+<g class="flag-badge" transform="translate(14,14)">
+<rect width="26" height="18" rx="4" fill="#0F172A" opacity="0.6"/>
+<g clip-path="url(#flag-clip-jp)">
+<rect width="26" height="18" fill="#FFFFFF"/>
+<circle cx="13" cy="9" r="5" fill="#BC002D"/>
+</g>
+<rect width="26" height="18" rx="4" fill="none" stroke="#FFFFFF" stroke-width="1.5"/>
+</g>
+</svg>

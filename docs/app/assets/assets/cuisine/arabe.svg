@@ -1,1 +1,36 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" data-cuisine="arabe"><title>mezze</title><rect width="160" height="160" rx="24" fill="#8A5A44"/><circle cx="80" cy="82" r="40" fill="#F5F1E8"/><circle cx="65" cy="78" r="9" fill="#6E8F4E"/><circle cx="95" cy="78" r="9" fill="#D95D39"/><circle cx="80" cy="98" r="9" fill="#B8862B"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" data-cuisine="arabe">
+<title>Tajin de cuscus arabe</title>
+<defs>
+<clipPath id="flag-clip-ma"><rect width="26" height="18" rx="4"/></clipPath>
+</defs>
+<rect width="160" height="160" rx="24" fill="#D97706"/>
+<g filter="drop-shadow(0 4px 10px rgba(0,0,0,0.25))">
+<!-- Sticker outline -->
+<ellipse cx="68" cy="106" rx="36" ry="18" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="8"/>
+<polygon points="98,64 128,48 116,98" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="8" stroke-linejoin="round"/>
+<!-- Earthenware tajine base -->
+<ellipse cx="68" cy="106" rx="34" ry="16" fill="#9A3412"/>
+<ellipse cx="68" cy="104" rx="32" ry="14" fill="#C2410C"/>
+<!-- Couscous mound -->
+<ellipse cx="68" cy="100" rx="28" ry="14" fill="#FBBF24"/>
+<ellipse cx="68" cy="96" rx="22" ry="10" fill="#FDE047"/>
+<!-- Chickpeas and vegetables on couscous -->
+<circle cx="62" cy="96" r="3" fill="#D97706"/>
+<circle cx="74" cy="94" r="3" fill="#D97706"/>
+<circle cx="68" cy="100" r="3.5" fill="#D97706"/>
+<path d="M60 92 Q68 88 76 92" stroke="#15803D" stroke-width="3" fill="none" stroke-linecap="round"/>
+<path d="M66 98 Q72 102 78 98" stroke="#DC2626" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+<!-- Conical tagine lid tilted at side -->
+<polygon points="102,64 126,50 114,96" fill="#EA580C"/>
+<ellipse cx="114" cy="96" rx="10" ry="4" fill="#C2410C"/>
+<circle cx="126" cy="50" r="4.5" fill="#9A3412"/>
+</g>
+<g class="flag-badge" transform="translate(14,14)">
+<rect width="26" height="18" rx="4" fill="#0F172A" opacity="0.6"/>
+<g clip-path="url(#flag-clip-ma)">
+<rect width="26" height="18" fill="#C1272D"/>
+<polygon points="13,5 14.5,9.5 19,9.5 15.5,12 17,16.5 13,13.5 9,16.5 10.5,12 7,9.5 11.5,9.5" fill="none" stroke="#006233" stroke-width="1.2"/>
+</g>
+<rect width="26" height="18" rx="4" fill="none" stroke="#FFFFFF" stroke-width="1.5"/>
+</g>
+</svg>

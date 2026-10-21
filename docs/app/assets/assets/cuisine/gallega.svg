@@ -1,1 +1,40 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" data-cuisine="gallega"><title>galician</title><rect width="160" height="160" rx="24" fill="#477B8C"/><path d="M48 98q32-57 64 0" fill="#F5F1E8"/><path d="M52 98h56" stroke="#103F36" stroke-width="8"/><circle cx="64" cy="82" r="7" fill="#2A9D8F"/><circle cx="96" cy="82" r="7" fill="#D95D39"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" data-cuisine="gallega">
+<title>Pulpo a la gallega</title>
+<defs>
+<clipPath id="flag-clip-es_ga"><rect width="38" height="16" rx="4"/></clipPath>
+</defs>
+<rect width="160" height="160" rx="24" fill="#0F766E"/>
+<g filter="drop-shadow(0 4px 10px rgba(0,0,0,0.25))">
+<!-- Sticker outline -->
+<ellipse cx="80" cy="90" rx="44" ry="32" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="8"/>
+<!-- Wooden platter -->
+<ellipse cx="80" cy="90" rx="42" ry="30" fill="#D97706"/>
+<ellipse cx="80" cy="88" rx="38" ry="26" fill="#B45309"/>
+<ellipse cx="80" cy="87" rx="35" ry="23" fill="#D97706"/>
+<!-- Octopus slices (pulpo) -->
+<ellipse cx="64" cy="84" rx="9" ry="7" fill="#FFFFFF" stroke="#7E22CE" stroke-width="3"/>
+<ellipse cx="82" cy="78" rx="9" ry="7" fill="#FFFFFF" stroke="#7E22CE" stroke-width="3"/>
+<ellipse cx="96" cy="84" rx="8" ry="6.5" fill="#FFFFFF" stroke="#7E22CE" stroke-width="3"/>
+<ellipse cx="72" cy="94" rx="8.5" ry="6.5" fill="#FFFFFF" stroke="#7E22CE" stroke-width="3"/>
+<ellipse cx="88" cy="94" rx="9" ry="7" fill="#FFFFFF" stroke="#7E22CE" stroke-width="3"/>
+<!-- Paprika dust & olive oil dots -->
+<circle cx="64" cy="84" r="2" fill="#DC2626"/>
+<circle cx="82" cy="78" r="2" fill="#DC2626"/>
+<circle cx="96" cy="84" r="2" fill="#DC2626"/>
+<circle cx="72" cy="94" r="2" fill="#DC2626"/>
+<circle cx="88" cy="94" r="2" fill="#DC2626"/>
+<circle cx="78" cy="87" r="2" fill="#EAB308"/>
+</g>
+<g class="flag-badge" transform="translate(14,14)">
+<rect width="38" height="16" rx="4" fill="#0F172A" opacity="0.6"/>
+<g clip-path="url(#flag-clip-es_ga)">
+<rect x="0" y="0" width="18" height="4" fill="#AA151B"/>
+<rect x="0" y="4" width="18" height="8" fill="#F1BF00"/>
+<rect x="0" y="12" width="18" height="4" fill="#AA151B"/>
+<line x1="18.5" y1="0" x2="18.5" y2="16" stroke="#FFFFFF" stroke-width="1"/>
+<rect x="19" y="0" width="19" height="16" fill="#FFFFFF"/>
+<polygon points="19,0 24.5,0 38,10.5 38,16 32.5,16 19,5.5" fill="#0099DD"/>
+</g>
+<rect width="38" height="16" rx="4" fill="none" stroke="#FFFFFF" stroke-width="1.5"/>
+</g>
+</svg>

@@ -1,1 +1,36 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" data-cuisine="tailandesa"><title>noodles</title><rect width="160" height="160" rx="24" fill="#2A9D8F"/><path d="M48 70h64l-8 43H56z" fill="#F5F1E8"/><path d="M58 74q-8 35 8 0t16 0 16 0" fill="none" stroke="#D95D39" stroke-width="6"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" data-cuisine="tailandesa">
+<title>Pad Thai tailandes</title>
+<defs>
+<clipPath id="flag-clip-th"><rect width="26" height="18" rx="4"/></clipPath>
+</defs>
+<rect width="160" height="160" rx="24" fill="#059669"/>
+<g filter="drop-shadow(0 4px 10px rgba(0,0,0,0.25))">
+<!-- Sticker outline -->
+<ellipse cx="80" cy="88" rx="44" ry="34" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="8"/>
+<!-- Thai ceramic bowl -->
+<path d="M38 86 C38 122 122 122 122 86 Z" fill="#047857"/>
+<ellipse cx="80" cy="86" rx="42" ry="22" fill="#065F46"/>
+<!-- Noodles bed -->
+<ellipse cx="80" cy="84" rx="38" ry="18" fill="#FBBF24"/>
+<path d="M52 82 Q70 76 88 84 Q100 80 108 84" stroke="#D97706" stroke-width="3" fill="none"/>
+<!-- Lime wedge on side -->
+<path d="M50 78 A10 10 0 0 1 66 70 L60 84 Z" fill="#84CC16"/>
+<!-- Fresh herbs & peanuts -->
+<circle cx="78" cy="80" r="2" fill="#DC2626"/>
+<circle cx="88" cy="82" r="2" fill="#DC2626"/>
+<path d="M82 74 C86 68 94 72 90 78 Z" fill="#15803D"/>
+<circle cx="94" cy="86" r="2" fill="#FFFBEB"/>
+<circle cx="74" cy="86" r="1.5" fill="#FFFBEB"/>
+</g>
+<g class="flag-badge" transform="translate(14,14)">
+<rect width="26" height="18" rx="4" fill="#0F172A" opacity="0.6"/>
+<g clip-path="url(#flag-clip-th)">
+<rect width="26" height="3" fill="#A51931"/>
+<rect y="3" width="26" height="3" fill="#F4F5F8"/>
+<rect y="6" width="26" height="6" fill="#2D2A4A"/>
+<rect y="12" width="26" height="3" fill="#F4F5F8"/>
+<rect y="15" width="26" height="3" fill="#A51931"/>
+</g>
+<rect width="26" height="18" rx="4" fill="none" stroke="#FFFFFF" stroke-width="1.5"/>
+</g>
+</svg>

@@ -1,1 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" data-cuisine="burguesa"><title>burger</title><rect width="160" height="160" rx="24" fill="#7A4A2E"/><path d="M45 70q35-35 70 0zM45 92h70M52 105h56" fill="#F5F1E8" stroke="#103F36" stroke-width="8" stroke-linecap="round"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" data-cuisine="burguesa">
+<title>Hamburguesa clasica</title>
+<defs>
+
+</defs>
+<rect width="160" height="160" rx="24" fill="#EA580C"/>
+<g filter="drop-shadow(0 4px 10px rgba(0,0,0,0.25))">
+<!-- Sticker outline -->
+<path d="M46 76 C46 54 114 54 114 76 L114 116 L46 116 Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="8" stroke-linejoin="round"/>
+<!-- Top burger bun with sesame -->
+<path d="M48 76 C48 56 112 56 112 76 Z" fill="#F59E0B"/>
+<circle cx="68" cy="66" r="1.5" fill="#FFFFFF"/>
+<circle cx="80" cy="63" r="1.5" fill="#FFFFFF"/>
+<circle cx="92" cy="66" r="1.5" fill="#FFFFFF"/>
+<circle cx="74" cy="71" r="1.5" fill="#FFFFFF"/>
+<circle cx="86" cy="71" r="1.5" fill="#FFFFFF"/>
+<!-- Melted cheese dripping -->
+<polygon points="46,80 114,80 110,88 88,94 80,88 72,94 48,86" fill="#FACC15"/>
+<!-- Grilled beef patty -->
+<rect x="46" y="86" width="68" height="12" rx="5" fill="#78350F"/>
+<!-- Wavy green lettuce -->
+<path d="M44 100 Q52 94 60 100 Q68 94 76 100 Q84 94 92 100 Q100 94 108 100 Q116 94 118 100" stroke="#16A34A" stroke-width="5" stroke-linecap="round" fill="none"/>
+<!-- Bottom bun -->
+<path d="M48 104 L112 104 C112 114 48 114 48 104 Z" fill="#F59E0B"/>
+</g>
+
+</svg>

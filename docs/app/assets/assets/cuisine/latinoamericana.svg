@@ -1,1 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" data-cuisine="latinoamericana"><title>arepa</title><rect width="160" height="160" rx="24" fill="#D97745"/><ellipse cx="80" cy="82" rx="42" ry="28" fill="#F5F1E8"/><path d="M47 82h66" stroke="#F4A261" stroke-width="7"/><circle cx="80" cy="82" r="8" fill="#2A9D8F"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" data-cuisine="latinoamericana">
+<title>Arepa latinoamericana</title>
+<defs>
+
+</defs>
+<rect width="160" height="160" rx="24" fill="#F97316"/>
+<g filter="drop-shadow(0 4px 10px rgba(0,0,0,0.25))">
+<!-- Sticker outline -->
+<ellipse cx="80" cy="88" rx="42" ry="32" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="8"/>
+<!-- Golden corn arepa -->
+<ellipse cx="80" cy="88" rx="40" ry="30" fill="#FDE047"/>
+<ellipse cx="80" cy="88" rx="36" ry="26" fill="#FACC15"/>
+<!-- Grill marks on arepa surface -->
+<line x1="60" y1="76" x2="100" y2="76" stroke="#B45309" stroke-width="2.5" stroke-linecap="round"/>
+<line x1="54" y1="88" x2="106" y2="88" stroke="#B45309" stroke-width="2.5" stroke-linecap="round"/>
+<line x1="60" y1="100" x2="100" y2="100" stroke="#B45309" stroke-width="2.5" stroke-linecap="round"/>
+<!-- Stuffed cut opening with cheese & avocado -->
+<path d="M50 88 Q80 94 110 88" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" fill="none"/>
+<circle cx="68" cy="89" r="3" fill="#84CC16"/>
+<circle cx="80" cy="90" r="3" fill="#DC2626"/>
+<circle cx="92" cy="89" r="3" fill="#84CC16"/>
+</g>
+
+</svg>

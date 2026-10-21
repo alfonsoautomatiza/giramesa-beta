@@ -1,1 +1,34 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" data-cuisine="italiana"><title>pizza slice</title><rect width="160" height="160" rx="24" fill="#D95D39"/><path d="M48 108 112 48l10 74z" fill="#F5F1E8"/><circle cx="87" cy="82" r="6" fill="#D95D39"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" data-cuisine="italiana">
+<title>Italian pizza slice</title>
+<defs>
+<clipPath id="flag-clip-it"><rect width="26" height="18" rx="4"/></clipPath>
+</defs>
+<rect width="160" height="160" rx="24" fill="#D95D39"/>
+<g filter="drop-shadow(0 4px 10px rgba(0,0,0,0.25))">
+<!-- White sticker backing -->
+<path d="M46 54 Q80 44 114 54 L80 134 Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="10" stroke-linejoin="round"/>
+<!-- Pizza crust -->
+<path d="M48 54 Q80 44 112 54" fill="none" stroke="#E59B34" stroke-width="16" stroke-linecap="round"/>
+<!-- Golden cheese triangle -->
+<path d="M52 58 L108 58 L80 126 Z" fill="#FFF2D6"/>
+<!-- Pepperoni slices -->
+<circle cx="70" cy="74" r="9" fill="#B91C1C"/>
+<circle cx="70" cy="74" r="8" fill="#DC2626"/>
+<circle cx="88" cy="88" r="8.5" fill="#B91C1C"/>
+<circle cx="88" cy="88" r="7.5" fill="#DC2626"/>
+<circle cx="76" cy="104" r="7" fill="#B91C1C"/>
+<circle cx="76" cy="104" r="6" fill="#DC2626"/>
+<!-- Basil leaves -->
+<path d="M85 66 C89 60 96 64 94 70 C90 72 84 70 85 66 Z" fill="#15803D"/>
+<path d="M66 92 C62 88 64 82 70 84 C71 88 68 93 66 92 Z" fill="#16A34A"/>
+</g>
+<g class="flag-badge" transform="translate(14,14)">
+<rect width="26" height="18" rx="4" fill="#0F172A" opacity="0.6"/>
+<g clip-path="url(#flag-clip-it)">
+<rect width="8.67" height="18" fill="#009246"/>
+<rect x="8.67" width="8.67" height="18" fill="#FFFFFF"/>
+<rect x="17.33" width="8.67" height="18" fill="#CE2B37"/>
+</g>
+<rect width="26" height="18" rx="4" fill="none" stroke="#FFFFFF" stroke-width="1.5"/>
+</g>
+</svg>

@@ -1,1 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" data-cuisine="otra"><title>other</title><rect width="160" height="160" rx="24" fill="#7C6F64"/><circle cx="80" cy="82" r="39" fill="#F5F1E8"/><circle cx="65" cy="82" r="7" fill="#D95D39"/><circle cx="80" cy="82" r="7" fill="#2A9D8F"/><circle cx="95" cy="82" r="7" fill="#B8862B"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" data-cuisine="otra">
+<title>Campana de servicio cloche</title>
+<defs>
+
+</defs>
+<rect width="160" height="160" rx="24" fill="#7C3AED"/>
+<g filter="drop-shadow(0 4px 10px rgba(0,0,0,0.25))">
+<!-- Sticker outline -->
+<ellipse cx="80" cy="108" rx="46" ry="14" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="8"/>
+<path d="M42 106 C42 66 118 66 118 106 Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="8"/>
+<!-- Serving cloche dome -->
+<ellipse cx="80" cy="108" rx="44" ry="12" fill="#94A3B8"/>
+<path d="M44 106 C44 70 116 70 116 106 Z" fill="#CBD5E1"/>
+<path d="M48 104 C48 74 112 74 112 104 Z" fill="#E2E8F0"/>
+<path d="M56 100 C56 78 84 76 84 100 Z" fill="#FFFFFF" opacity="0.6"/>
+<!-- Top knob handle -->
+<ellipse cx="80" cy="68" rx="6" ry="5" fill="#94A3B8"/>
+<!-- Culinary magic sparkle -->
+<polygon points="118,58 120,64 126,66 120,68 118,74 116,68 110,66 116,64" fill="#FDE047"/>
+</g>
+
+</svg>

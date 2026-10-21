@@ -1,1 +1,39 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" data-cuisine="asturiana"><title>fabada</title><rect width="160" height="160" rx="24" fill="#4F7C55"/><ellipse cx="80" cy="84" rx="40" ry="29" fill="#F5F1E8"/><circle cx="63" cy="82" r="8" fill="#B8862B"/><circle cx="88" cy="93" r="8" fill="#B23A48"/><path d="M80 55v-18" stroke="#103F36" stroke-width="7" stroke-linecap="round"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" data-cuisine="asturiana">
+<title>Fabada asturiana</title>
+<defs>
+<clipPath id="flag-clip-es_as"><rect width="38" height="16" rx="4"/></clipPath>
+</defs>
+<rect width="160" height="160" rx="24" fill="#1D4ED8"/>
+<g filter="drop-shadow(0 4px 10px rgba(0,0,0,0.25))">
+<!-- Sticker outline -->
+<ellipse cx="80" cy="90" rx="44" ry="32" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="8"/>
+<!-- Clay cazuela -->
+<path d="M38 88 C38 122 122 122 122 88 Z" fill="#9A3412"/>
+<ellipse cx="80" cy="88" rx="42" ry="24" fill="#C2410C"/>
+<!-- Golden broth & large white beans (fabes) -->
+<ellipse cx="80" cy="86" rx="38" ry="20" fill="#EA580C"/>
+<ellipse cx="62" cy="86" rx="6" ry="4" fill="#FEF08A"/>
+<ellipse cx="74" cy="84" rx="6.5" ry="4.5" fill="#FEF08A"/>
+<ellipse cx="86" cy="88" rx="6" ry="4" fill="#FEF08A"/>
+<ellipse cx="70" cy="92" rx="6" ry="4" fill="#FEF08A"/>
+<!-- Chorizo & morcilla slice -->
+<circle cx="94" cy="82" r="7" fill="#DC2626"/>
+<circle cx="94" cy="82" r="5" fill="#B91C1C"/>
+<circle cx="62" cy="80" r="6" fill="#1E293B"/>
+</g>
+<g class="flag-badge" transform="translate(14,14)">
+<rect width="38" height="16" rx="4" fill="#0F172A" opacity="0.6"/>
+<g clip-path="url(#flag-clip-es_as)">
+<rect x="0" y="0" width="18" height="4" fill="#AA151B"/>
+<rect x="0" y="4" width="18" height="8" fill="#F1BF00"/>
+<rect x="0" y="12" width="18" height="4" fill="#AA151B"/>
+<line x1="18.5" y1="0" x2="18.5" y2="16" stroke="#FFFFFF" stroke-width="1"/>
+<rect x="19" y="0" width="19" height="16" fill="#0055A5"/>
+<rect x="27.6" y="2.5" width="1.8" height="11" fill="#FCD116"/>
+<rect x="23.5" y="5.2" width="10" height="1.8" fill="#FCD116"/>
+<circle cx="25.5" cy="8.5" r="0.8" fill="#FCD116"/>
+<circle cx="31.5" cy="8.5" r="0.8" fill="#FCD116"/>
+</g>
+<rect width="38" height="16" rx="4" fill="none" stroke="#FFFFFF" stroke-width="1.5"/>
+</g>
+</svg>

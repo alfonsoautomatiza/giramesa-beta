@@ -1,1 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img"><rect width="160" height="160" rx="24" fill="#146356"/><circle cx="80" cy="76" r="42" fill="#F5F1E8" opacity=".94"/><path d="M45 91h70M52 104h56" stroke="#103F36" stroke-width="8" stroke-linecap="round"/><circle cx="65" cy="68" r="7" fill="#E76F51"/><circle cx="94" cy="68" r="7" fill="#2A9D8F"/><path d="M80 37v19" stroke="#103F36" stroke-width="7" stroke-linecap="round"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" data-cuisine="general">
+<title>Cubiertos generales cruzados</title>
+<defs>
+
+</defs>
+<rect width="160" height="160" rx="24" fill="#146356"/>
+<g filter="drop-shadow(0 4px 10px rgba(0,0,0,0.25))">
+<!-- Sticker outline -->
+<circle cx="80" cy="88" r="42" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="8"/>
+<!-- White dinner plate -->
+<circle cx="80" cy="88" r="40" fill="#F8FAFC"/>
+<circle cx="80" cy="88" r="32" fill="#F1F5F9"/>
+<!-- Crossed fork & spoon -->
+<path d="M58 64 L102 112" stroke="#64748B" stroke-width="4" stroke-linecap="round"/>
+<path d="M54 60 C50 64 56 70 60 66 Z" fill="#64748B"/>
+<path d="M102 64 L58 112" stroke="#64748B" stroke-width="4" stroke-linecap="round"/>
+<!-- Fork tines -->
+<path d="M98 60 L106 68 M102 56 L108 64 M94 64 L100 72" stroke="#64748B" stroke-width="2" stroke-linecap="round"/>
+</g>
+
+</svg>

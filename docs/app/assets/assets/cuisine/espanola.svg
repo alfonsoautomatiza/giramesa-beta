@@ -1,1 +1,37 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" data-cuisine="espanola"><title>paella</title><rect width="160" height="160" rx="24" fill="#B8862B"/><circle cx="80" cy="82" r="38" fill="#F5F1E8"/><path d="M42 82h76M80 44v-16" stroke="#103F36" stroke-width="8" stroke-linecap="round"/><circle cx="63" cy="72" r="6" fill="#D95D39"/><circle cx="95" cy="92" r="6" fill="#2A9D8F"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" data-cuisine="espanola">
+<title>Paella valenciana</title>
+<defs>
+<clipPath id="flag-clip-es"><rect width="26" height="18" rx="4"/></clipPath>
+</defs>
+<rect width="160" height="160" rx="24" fill="#B8862B"/>
+<g filter="drop-shadow(0 4px 10px rgba(0,0,0,0.25))">
+<!-- White sticker backing -->
+<ellipse cx="80" cy="88" rx="48" ry="38" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="8"/>
+<!-- Paella pan handles -->
+<path d="M28 88 Q20 78 20 88 Q20 98 28 88 M132 88 Q140 78 140 88 Q140 98 132 88" fill="none" stroke="#1E293B" stroke-width="6" stroke-linecap="round"/>
+<!-- Black paella pan body -->
+<ellipse cx="80" cy="88" rx="44" ry="34" fill="#1E293B"/>
+<ellipse cx="80" cy="87" rx="41" ry="31" fill="#0F172A"/>
+<!-- Saffron rice bed -->
+<ellipse cx="80" cy="87" rx="38" ry="28" fill="#EAB308"/>
+<!-- Gamba / King prawn -->
+<path d="M68 84 C76 72 96 74 98 86 C99 94 92 98 84 94" fill="none" stroke="#EF4444" stroke-width="8" stroke-linecap="round"/>
+<circle cx="70" cy="84" r="2" fill="#991B1B"/>
+<!-- Lemon wedge in center -->
+<path d="M78 88 L88 78 A10 10 0 0 1 88 98 Z" fill="#FEF08A" stroke="#EAB308" stroke-width="2"/>
+<!-- Pimiento strips & peas -->
+<path d="M60 88 Q66 84 72 88" stroke="#DC2626" stroke-width="4" stroke-linecap="round" fill="none"/>
+<path d="M88 96 Q94 98 100 94" stroke="#DC2626" stroke-width="4" stroke-linecap="round" fill="none"/>
+<circle cx="66" cy="96" r="3" fill="#15803D"/>
+<circle cx="94" cy="78" r="3" fill="#15803D"/>
+</g>
+<g class="flag-badge" transform="translate(14,14)">
+<rect width="26" height="18" rx="4" fill="#0F172A" opacity="0.6"/>
+<g clip-path="url(#flag-clip-es)">
+<rect width="26" height="4.5" fill="#AA151B"/>
+<rect y="4.5" width="26" height="9" fill="#F1BF00"/>
+<rect y="13.5" width="26" height="4.5" fill="#AA151B"/>
+</g>
+<rect width="26" height="18" rx="4" fill="none" stroke="#FFFFFF" stroke-width="1.5"/>
+</g>
+</svg>

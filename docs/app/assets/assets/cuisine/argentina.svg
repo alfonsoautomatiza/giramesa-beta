@@ -1,1 +1,28 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" data-cuisine="argentina"><title>asado</title><rect width="160" height="160" rx="24" fill="#5B8DB8"/><path d="M48 65h64v47H48z" fill="#103F36"/><path d="M55 76h50M55 91h50" stroke="#F5F1E8" stroke-width="7"/><path d="M42 58h76" stroke="#F5F1E8" stroke-width="7" stroke-linecap="round"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" data-cuisine="argentina">
+<title>Empanada argentina</title>
+<defs>
+<clipPath id="flag-clip-ar"><rect width="26" height="18" rx="4"/></clipPath>
+</defs>
+<rect width="160" height="160" rx="24" fill="#0284C7"/>
+<g filter="drop-shadow(0 4px 10px rgba(0,0,0,0.25))">
+<!-- Sticker outline -->
+<path d="M38 106 C38 58 122 58 122 106 Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="10" stroke-linejoin="round"/>
+<!-- Baked golden empanada crescent -->
+<path d="M40 106 C40 62 120 62 120 106 Z" fill="#F59E0B"/>
+<path d="M44 102 C44 68 116 68 116 102 Z" fill="#FBBF24"/>
+<!-- Crimped repulgue braided edge -->
+<path d="M40 106 Q44 98 48 106 Q52 98 56 106 Q60 98 64 106 Q68 98 72 106 Q76 98 80 106 Q84 98 88 106 Q92 98 96 106 Q100 98 104 106 Q108 98 112 106 Q116 98 120 106" stroke="#D97706" stroke-width="5" fill="none" stroke-linecap="round"/>
+<!-- Subtle golden baked marks -->
+<ellipse cx="80" cy="82" rx="16" ry="6" fill="#F59E0B" opacity="0.6"/>
+</g>
+<g class="flag-badge" transform="translate(14,14)">
+<rect width="26" height="18" rx="4" fill="#0F172A" opacity="0.6"/>
+<g clip-path="url(#flag-clip-ar)">
+<rect width="26" height="6" fill="#75AADB"/>
+<rect y="6" width="26" height="6" fill="#FFFFFF"/>
+<rect y="12" width="26" height="6" fill="#75AADB"/>
+<circle cx="13" cy="9" r="2" fill="#F6B40E"/>
+</g>
+<rect width="26" height="18" rx="4" fill="none" stroke="#FFFFFF" stroke-width="1.5"/>
+</g>
+</svg>

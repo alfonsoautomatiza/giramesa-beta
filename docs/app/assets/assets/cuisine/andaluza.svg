@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" data-cuisine="andaluza">
+<title>Pescaíto frito andaluz</title>
+<defs>
+<clipPath id="flag-clip-es_an"><rect width="38" height="16" rx="4"/></clipPath>
+</defs>
+<rect width="160" height="160" rx="24" fill="#C25E1A"/>
+<g filter="drop-shadow(0 4px 10px rgba(0,0,0,0.25))">
+<!-- Sticker outline -->
+<path d="M46,68 C46,50 68,42 90,48 C112,54 124,70 120,92 C126,98 128,108 124,118 C118,128 106,134 94,134 C82,136 68,138 60,136 C52,132 46,122 46,110 C42,98 44,80 46,68 Z" fill="#FFFFFF"/>
+
+<!-- Paper cone (cartucho de pescaíto) -->
+<!-- Back of paper cone -->
+<path d="M52,72 L82,50 L112,74 L68,130 Z" fill="#E2DCBE"/>
+
+<!-- Crispy fried fish & seafood spilling out -->
+<!-- Golden batter pieces / chipirones -->
+<circle cx="70" cy="66" r="10" fill="#D97706"/>
+<circle cx="70" cy="66" r="6" fill="#F59E0B"/>
+<circle cx="94" cy="72" r="9" fill="#B45309"/>
+<circle cx="94" cy="72" r="5.5" fill="#F59E0B"/>
+
+<!-- Fried fish 1 (pescadito / boquerón frito) -->
+<path d="M58,68 C58,56 70,50 82,56 C90,60 96,68 98,72 L84,76 C76,70 66,70 60,76 Z" fill="#F59E0B"/>
+<polygon points="56,66 48,58 52,68 48,76 56,70" fill="#D97706"/>
+<circle cx="86" cy="60" r="1.5" fill="#78350F"/>
+
+<!-- Fried fish 2 (pescadito cruzado) -->
+<path d="M72,82 C76,68 88,60 104,64 C108,68 112,74 108,80 L96,82 C88,78 80,82 74,86 Z" fill="#FBBF24"/>
+<polygon points="108,76 118,72 114,80 120,86 110,82" fill="#D97706"/>
+<circle cx="80" cy="76" r="1.5" fill="#78350F"/>
+
+<!-- Calamari ring (calamar frito) -->
+<ellipse cx="84" cy="80" rx="9" ry="7" fill="#F59E0B" stroke="#B45309" stroke-width="3"/>
+<ellipse cx="84" cy="80" rx="4" ry="3" fill="#E2DCBE"/>
+
+<!-- Front fold of paper cone (cartucho blanco/marfil) -->
+<path d="M50,74 L108,84 L66,132 Z" fill="#FFFDF5"/>
+<path d="M50,74 L66,132 L58,110 Z" fill="#EDE7D3"/>
+<line x1="50" y1="74" x2="66" y2="132" stroke="#E2DCBE" stroke-width="1.5"/>
+
+<!-- Lemon wedge (gajo de limón fresco) -->
+<g transform="translate(86, 96)">
+<path d="M4,28 C16,30 32,24 34,10 C34,6 30,2 24,0 C12,12 6,20 4,28 Z" fill="#EAB308"/>
+<path d="M6,26 C16,28 30,22 32,10 C28,14 18,20 6,26 Z" fill="#FDE047"/>
+<path d="M8,23 C14,24 22,20 28,12 L18,17 Z" fill="#FACC15"/>
+<path d="M12,24 C16,25 24,22 29,15 L21,19 Z" fill="#FEF08A"/>
+</g>
+</g>
+
+<!-- Dual Flag Badge: España + Andalucía -->
+<g class="flag-badge" transform="translate(14,14)">
+<rect width="38" height="16" rx="4" fill="#0F172A" opacity="0.6"/>
+<g clip-path="url(#flag-clip-es_an)">
+<!-- España -->
+<rect x="0" y="0" width="18" height="4" fill="#AA151B"/>
+<rect x="0" y="4" width="18" height="8" fill="#F1BF00"/>
+<rect x="0" y="12" width="18" height="4" fill="#AA151B"/>
+<line x1="18.5" y1="0" x2="18.5" y2="16" stroke="#FFFFFF" stroke-width="1"/>
+<!-- Andalucía: verde, blanca, verde -->
+<rect x="19" y="0" width="19" height="5.33" fill="#007A33"/>
+<rect x="19" y="5.33" width="19" height="5.34" fill="#FFFFFF"/>
+<rect x="19" y="10.67" width="19" height="5.33" fill="#007A33"/>
+</g>
+<rect width="38" height="16" rx="4" fill="none" stroke="#FFFFFF" stroke-width="1.5"/>
+</g>
+</svg>

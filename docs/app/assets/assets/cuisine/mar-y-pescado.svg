@@ -1,1 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" data-cuisine="mar-y-pescado"><title>fish</title><rect width="160" height="160" rx="24" fill="#2A9D8F"/><path d="M46 82q32-38 67 0-35 38-67 0z" fill="#F5F1E8"/><path d="m46 82-20-18v36z" fill="#F4A261"/><circle cx="94" cy="76" r="5" fill="#103F36"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" data-cuisine="mar-y-pescado">
+<title>Pescado y marisco fresco</title>
+<defs>
+
+</defs>
+<rect width="160" height="160" rx="24" fill="#0891B2"/>
+<g filter="drop-shadow(0 4px 10px rgba(0,0,0,0.25))">
+<!-- Sticker outline -->
+<path d="M42 88 C42 66 118 66 118 88 C118 110 42 110 42 88 Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="8" stroke-linejoin="round"/>
+<circle cx="106" cy="88" r="14" fill="#FFFFFF"/>
+<!-- Fish fillet -->
+<path d="M46 88 C50 72 100 72 114 88 C100 104 50 104 46 88 Z" fill="#F8FAFC"/>
+<path d="M54 88 C58 76 96 76 106 88 C96 100 58 100 54 88 Z" fill="#E2E8F0"/>
+<!-- Grill lines on fish -->
+<line x1="68" y1="80" x2="68" y2="96" stroke="#D97706" stroke-width="2.5" stroke-linecap="round"/>
+<line x1="80" y1="78" x2="80" y2="98" stroke="#D97706" stroke-width="2.5" stroke-linecap="round"/>
+<line x1="92" y1="80" x2="92" y2="96" stroke="#D97706" stroke-width="2.5" stroke-linecap="round"/>
+<!-- Lemon wheel -->
+<circle cx="106" cy="88" r="12" fill="#FDE047"/>
+<circle cx="106" cy="88" r="9.5" fill="#FEF08A"/>
+<path d="M106 79 L106 97 M97 88 L115 88" stroke="#EAB308" stroke-width="1.5"/>
+</g>
+
+</svg>

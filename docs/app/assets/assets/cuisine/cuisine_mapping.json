@@ -120,6 +120,10 @@
       "label": "Madrileña",
       "asset": "madrilena.svg"
     },
+    "andaluza": {
+      "label": "Andaluza",
+      "asset": "andaluza.svg"
+    },
     "otra": {
       "label": "Otra",
       "asset": "otra.svg"
@@ -130,6 +134,34 @@
     }
   },
   "aliases": {
+    "andaluz": {
+      "label": "Andaluza",
+      "asset": "andaluza.svg"
+    },
+    "andaluza": {
+      "label": "Andaluza",
+      "asset": "andaluza.svg"
+    },
+    "pescaito frito": {
+      "label": "Andaluza",
+      "asset": "andaluza.svg"
+    },
+    "pescaíto frito": {
+      "label": "Andaluza",
+      "asset": "andaluza.svg"
+    },
+    "fritura andaluza": {
+      "label": "Andaluza",
+      "asset": "andaluza.svg"
+    },
+    "fish and chips": {
+      "label": "Andaluza",
+      "asset": "andaluza.svg"
+    },
+    "fish and chip": {
+      "label": "Andaluza",
+      "asset": "andaluza.svg"
+    },
     "spanish": {
       "label": "Española",
       "asset": "espanola.svg"

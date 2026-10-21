@@ -1,1 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" data-cuisine="fast-food"><title>fries</title><rect width="160" height="160" rx="24" fill="#D95D39"/><path d="M52 60v-20M66 60V35M80 60V30M94 60V36M108 60V40" stroke="#F5F1E8" stroke-width="9" stroke-linecap="round"/><path d="M49 57h62l-8 58H57z" fill="#103F36"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" data-cuisine="fast-food">
+<title>Patatas fritas y refresco fast food</title>
+<defs>
+
+</defs>
+<rect width="160" height="160" rx="24" fill="#CA8A04"/>
+<g filter="drop-shadow(0 4px 10px rgba(0,0,0,0.25))">
+<!-- Sticker outline -->
+<path d="M42 76 L76 76 L72 114 L46 114 Z M82 66 L112 66 L108 114 L86 114 Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="8" stroke-linejoin="round"/>
+<!-- French fries carton -->
+<path d="M44 82 L74 82 L70 114 L48 114 Z" fill="#DC2626"/>
+<!-- Golden crispy fries -->
+<rect x="47" y="62" width="4.5" height="24" rx="2" fill="#FACC15"/>
+<rect x="53" y="56" width="5" height="30" rx="2" fill="#FACC15"/>
+<rect x="60" y="58" width="4.5" height="28" rx="2" fill="#FACC15"/>
+<rect x="66" y="64" width="4.5" height="22" rx="2" fill="#FACC15"/>
+<!-- Soda cup with lid & straw -->
+<path d="M84 72 L110 72 L106 114 L88 114 Z" fill="#2563EB"/>
+<rect x="82" y="68" width="30" height="5" rx="2" fill="#F8FAFC"/>
+<line x1="97" y1="68" x2="105" y2="52" stroke="#EF4444" stroke-width="3" stroke-linecap="round"/>
+</g>
+
+</svg>

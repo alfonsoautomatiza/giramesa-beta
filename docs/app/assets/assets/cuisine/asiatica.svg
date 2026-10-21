@@ -1,1 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" data-cuisine="asiatica"><title>asian</title><rect width="160" height="160" rx="24" fill="#6A4C93"/><path d="M48 61h64v51H48z" fill="#F5F1E8"/><path d="M59 70v32M75 70v32M91 70v32" stroke="#D95D39" stroke-width="6"/><path d="M43 56h74" stroke="#103F36" stroke-width="7" stroke-linecap="round"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" data-cuisine="asiatica">
+<title>Wok de fideos asiaticos</title>
+<defs>
+
+</defs>
+<rect width="160" height="160" rx="24" fill="#B91C1C"/>
+<g filter="drop-shadow(0 4px 10px rgba(0,0,0,0.25))">
+<!-- Sticker outline -->
+<ellipse cx="76" cy="92" rx="42" ry="28" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="8"/>
+<path d="M116 88 L138 80" stroke="#FFFFFF" stroke-width="12" stroke-linecap="round"/>
+<path d="M68 54 L92 90" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round"/>
+<!-- Black iron wok & long handle -->
+<path d="M116 88 L138 80" stroke="#1E293B" stroke-width="6" stroke-linecap="round"/>
+<path d="M36 90 C36 122 116 122 116 90 Z" fill="#1E293B"/>
+<ellipse cx="76" cy="90" rx="40" ry="24" fill="#0F172A"/>
+<!-- Golden wok noodles -->
+<ellipse cx="76" cy="88" rx="36" ry="20" fill="#FBBF24"/>
+<path d="M52 86 Q70 80 88 88 Q100 82 106 88" stroke="#D97706" stroke-width="3.5" fill="none"/>
+<!-- Chopsticks lifting noodles -->
+<line x1="68" y1="54" x2="88" y2="86" stroke="#451A03" stroke-width="3" stroke-linecap="round"/>
+<line x1="74" y1="52" x2="94" y2="84" stroke="#451A03" stroke-width="3" stroke-linecap="round"/>
+<path d="M78 68 Q84 62 90 74" stroke="#FDE68A" stroke-width="2.5" fill="none"/>
+</g>
+
+</svg>

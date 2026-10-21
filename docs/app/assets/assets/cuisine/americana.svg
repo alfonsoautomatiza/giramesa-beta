@@ -1,1 +1,37 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" data-cuisine="americana"><title>pancakes</title><rect width="160" height="160" rx="24" fill="#A0442A"/><ellipse cx="80" cy="99" rx="39" ry="15" fill="#F5F1E8"/><ellipse cx="80" cy="84" rx="39" ry="15" fill="#F4A261"/><ellipse cx="80" cy="69" rx="34" ry="13" fill="#F5F1E8"/><path d="M80 56v-18" stroke="#D95D39" stroke-width="7" stroke-linecap="round"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" data-cuisine="americana">
+<title>Costillar BBQ americano</title>
+<defs>
+<clipPath id="flag-clip-us"><rect width="26" height="18" rx="4"/></clipPath>
+</defs>
+<rect width="160" height="160" rx="24" fill="#1E3A8A"/>
+<g filter="drop-shadow(0 4px 10px rgba(0,0,0,0.25))">
+<!-- Sticker outline -->
+<path d="M42 108 C46 72 114 72 118 108 Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="10" stroke-linejoin="round"/>
+<!-- White rib bone tips -->
+<rect x="48" y="68" width="6" height="14" rx="3" fill="#FFFFFF"/>
+<rect x="62" y="62" width="6" height="14" rx="3" fill="#FFFFFF"/>
+<rect x="76" y="60" width="6" height="14" rx="3" fill="#FFFFFF"/>
+<rect x="90" y="62" width="6" height="14" rx="3" fill="#FFFFFF"/>
+<rect x="104" y="68" width="6" height="14" rx="3" fill="#FFFFFF"/>
+<!-- Glazed BBQ ribs slab -->
+<path d="M44 112 C44 76 116 76 116 112 C104 114 56 114 44 112 Z" fill="#78350F"/>
+<path d="M46 108 C46 80 114 80 114 108 C102 106 58 106 46 108 Z" fill="#991B1B"/>
+<!-- Rib bone separation grooves -->
+<path d="M57 78 L57 110 M71 74 L71 110 M85 74 L85 110 M99 78 L99 110" stroke="#450A0A" stroke-width="3" stroke-linecap="round"/>
+<!-- Glossy barbecue sauce highlights -->
+<path d="M54 86 Q80 80 106 86" stroke="#EF4444" stroke-width="3" fill="none" opacity="0.8"/>
+<circle cx="68" cy="98" r="1.5" fill="#FEF08A"/>
+<circle cx="88" cy="94" r="1.5" fill="#FEF08A"/>
+<circle cx="80" cy="102" r="1.5" fill="#FEF08A"/>
+</g>
+<g class="flag-badge" transform="translate(14,14)">
+<rect width="26" height="18" rx="4" fill="#0F172A" opacity="0.6"/>
+<g clip-path="url(#flag-clip-us)">
+<rect width="26" height="18" fill="#B22234"/>
+<path d="M0,2.6h26M0,5.2h26M0,7.8h26M0,10.4h26M0,13h26M0,15.6h26" stroke="#FFFFFF" stroke-width="1.3"/>
+<rect width="11" height="9.5" fill="#3C3B6E"/>
+<polygon points="5.5,2 6,3.5 7.5,3.5 6.2,4.5 6.7,6 5.5,5 4.3,6 4.8,4.5 3.5,3.5 5,3.5" fill="#FFFFFF" transform="scale(0.7) translate(2.5, 1)"/>
+</g>
+<rect width="26" height="18" rx="4" fill="none" stroke="#FFFFFF" stroke-width="1.5"/>
+</g>
+</svg>

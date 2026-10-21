@@ -1,1 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" data-cuisine="vegana"><title>leaf</title><rect width="160" height="160" rx="24" fill="#4D8B5B"/><path d="M80 116C42 96 46 55 111 43c3 49-9 65-31 73z" fill="#F5F1E8"/><path d="M54 103q23-24 50-48" stroke="#2A9D8F" stroke-width="7" fill="none" stroke-linecap="round"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" data-cuisine="vegana">
+<title>Bowl vegano de granos</title>
+<defs>
+
+</defs>
+<rect width="160" height="160" rx="24" fill="#059669"/>
+<g filter="drop-shadow(0 4px 10px rgba(0,0,0,0.25))">
+<!-- Sticker outline -->
+<ellipse cx="80" cy="88" rx="44" ry="34" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="8"/>
+<!-- Plant bowl -->
+<path d="M38 86 C38 122 122 122 122 86 Z" fill="#065F46"/>
+<ellipse cx="80" cy="86" rx="42" ry="22" fill="#047857"/>
+<!-- Quinoa & grain base -->
+<ellipse cx="80" cy="84" rx="38" ry="18" fill="#FDE68A"/>
+<!-- Avocado slices -->
+<path d="M50 84 C50 72 62 70 64 84 Z" fill="#84CC16"/>
+<path d="M56 86 C56 74 68 72 70 86 Z" fill="#65A30D"/>
+<!-- Chickpeas cluster -->
+<circle cx="78" cy="82" r="4" fill="#F59E0B"/>
+<circle cx="86" cy="80" r="3.5" fill="#F59E0B"/>
+<circle cx="82" cy="88" r="4" fill="#F59E0B"/>
+<!-- Purple cabbage & broccoli -->
+<ellipse cx="98" cy="82" rx="7" ry="5" fill="#7E22CE"/>
+<circle cx="104" cy="84" r="4" fill="#166534"/>
+</g>
+
+</svg>

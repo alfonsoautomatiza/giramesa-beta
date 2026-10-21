@@ -1,1 +1,38 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" data-cuisine="pizza"><title>pizza</title><rect width="160" height="160" rx="24" fill="#D95D39"/><path d="M45 108 116 49 93 119z" fill="#F5F1E8"/><circle cx="82" cy="87" r="6" fill="#D95D39"/><circle cx="94" cy="101" r="5" fill="#2A9D8F"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" data-cuisine="pizza">
+<title>Pizza entera redonda</title>
+<defs>
+<clipPath id="flag-clip-it"><rect width="26" height="18" rx="4"/></clipPath>
+</defs>
+<rect width="160" height="160" rx="24" fill="#DC2626"/>
+<g filter="drop-shadow(0 4px 10px rgba(0,0,0,0.25))">
+<!-- Sticker outline -->
+<circle cx="80" cy="88" r="44" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="8"/>
+<!-- Whole pizza crust -->
+<circle cx="80" cy="88" r="42" fill="#D97706"/>
+<circle cx="80" cy="88" r="37" fill="#FDE68A"/>
+<circle cx="80" cy="88" r="35" fill="#FEF3C7"/>
+<!-- Slice division cut lines -->
+<line x1="80" y1="53" x2="80" y2="123" stroke="#D97706" stroke-width="1.8" stroke-dasharray="3,2"/>
+<line x1="49" y1="70" x2="111" y2="106" stroke="#D97706" stroke-width="1.8" stroke-dasharray="3,2"/>
+<line x1="49" y1="106" x2="111" y2="70" stroke="#D97706" stroke-width="1.8" stroke-dasharray="3,2"/>
+<!-- Pepperoni toppings -->
+<circle cx="68" cy="74" r="5.5" fill="#B91C1C"/>
+<circle cx="92" cy="74" r="5.5" fill="#B91C1C"/>
+<circle cx="66" cy="98" r="5" fill="#B91C1C"/>
+<circle cx="94" cy="98" r="5.5" fill="#B91C1C"/>
+<circle cx="80" cy="88" r="6" fill="#B91C1C"/>
+<!-- Basil leaves -->
+<circle cx="78" cy="72" r="2.5" fill="#15803D"/>
+<circle cx="88" cy="86" r="2.5" fill="#15803D"/>
+<circle cx="74" cy="94" r="2.5" fill="#15803D"/>
+</g>
+<g class="flag-badge" transform="translate(14,14)">
+<rect width="26" height="18" rx="4" fill="#0F172A" opacity="0.6"/>
+<g clip-path="url(#flag-clip-it)">
+<rect width="8.67" height="18" fill="#009246"/>
+<rect x="8.67" width="8.67" height="18" fill="#FFFFFF"/>
+<rect x="17.33" width="8.67" height="18" fill="#CE2B37"/>
+</g>
+<rect width="26" height="18" rx="4" fill="none" stroke="#FFFFFF" stroke-width="1.5"/>
+</g>
+</svg>

@@ -1,1 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" data-cuisine="vegetariana"><title>salad</title><rect width="160" height="160" rx="24" fill="#6E8F4E"/><path d="M45 79h70q-8 36-35 36T45 79z" fill="#F5F1E8"/><path d="M80 79V42M80 58q-24-17-29 1M80 64q24-17 29 1" fill="none" stroke="#2A9D8F" stroke-width="7" stroke-linecap="round"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" data-cuisine="vegetariana">
+<title>Ensalada vegetariana</title>
+<defs>
+
+</defs>
+<rect width="160" height="160" rx="24" fill="#16A34A"/>
+<g filter="drop-shadow(0 4px 10px rgba(0,0,0,0.25))">
+<!-- Sticker outline -->
+<ellipse cx="80" cy="88" rx="44" ry="34" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="8"/>
+<!-- Salad bowl -->
+<path d="M38 86 C38 122 122 122 122 86 Z" fill="#F8FAFC"/>
+<ellipse cx="80" cy="86" rx="42" ry="22" fill="#E2E8F0"/>
+<!-- Crispy green leaves -->
+<path d="M48 84 C48 70 70 66 76 80 Z" fill="#22C55E"/>
+<path d="M74 80 C80 64 102 68 104 82 Z" fill="#15803D"/>
+<path d="M60 84 C66 74 88 74 94 86 Z" fill="#4ADE80"/>
+<!-- Tomato & carrot slices -->
+<circle cx="66" cy="82" r="6" fill="#EF4444"/>
+<circle cx="92" cy="80" r="5.5" fill="#EF4444"/>
+<ellipse cx="80" cy="86" rx="6" ry="3" fill="#F97316"/>
+<!-- Cucumber slices -->
+<circle cx="56" cy="84" r="5" fill="#86EFAC" stroke="#15803D" stroke-width="2"/>
+<circle cx="102" cy="84" r="5" fill="#86EFAC" stroke="#15803D" stroke-width="2"/>
+</g>
+
+</svg>

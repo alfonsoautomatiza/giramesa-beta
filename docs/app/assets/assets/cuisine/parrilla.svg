@@ -1,1 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" data-cuisine="parrilla"><title>grill</title><rect width="160" height="160" rx="24" fill="#713E2D"/><path d="M47 65h66M52 81h56M58 97h44" stroke="#F5F1E8" stroke-width="8" stroke-linecap="round"/><path d="M80 48v-18M65 107l-8 14M95 107l8 14" stroke="#103F36" stroke-width="7" stroke-linecap="round"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" data-cuisine="parrilla">
+<title>Chuleton a la parrilla</title>
+<defs>
+
+</defs>
+<rect width="160" height="160" rx="24" fill="#334155"/>
+<g filter="drop-shadow(0 4px 10px rgba(0,0,0,0.25))">
+<!-- Sticker outline -->
+<ellipse cx="80" cy="90" rx="46" ry="34" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="8"/>
+<!-- Grill grate circle & bars -->
+<ellipse cx="80" cy="90" rx="44" ry="32" fill="none" stroke="#64748B" stroke-width="3"/>
+<line x1="42" y1="90" x2="118" y2="90" stroke="#64748B" stroke-width="2.5"/>
+<line x1="50" y1="78" x2="110" y2="78" stroke="#64748B" stroke-width="2"/>
+<line x1="50" y1="102" x2="110" y2="102" stroke="#64748B" stroke-width="2"/>
+<!-- Thick steak fillet -->
+<path d="M52 94 C50 78 72 74 94 76 C112 78 116 94 104 104 C88 110 58 108 52 94 Z" fill="#881337"/>
+<path d="M54 92 C52 80 72 76 92 78 C110 80 114 92 102 102 C88 108 60 106 54 92 Z" fill="#9F1239"/>
+<!-- Criss-cross sear grill marks -->
+<path d="M64 78 L96 102 M76 76 L108 100 M68 102 L98 78 M56 96 L86 76" stroke="#450A0A" stroke-width="3" stroke-linecap="round"/>
+<!-- Small bottom grill flame -->
+<path d="M80 118 Q74 110 80 106 Q86 110 80 118 Z" fill="#F97316"/>
+</g>
+
+</svg>

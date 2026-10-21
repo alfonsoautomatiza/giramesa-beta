@@ -1,1 +1,34 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" data-cuisine="china"><title>dumplings</title><rect width="160" height="160" rx="24" fill="#B23A48"/><path d="M43 93q37-60 74 0" fill="#F5F1E8"/><path d="M48 91q32 20 64 0" fill="none" stroke="#103F36" stroke-width="6"/><path d="M80 54v40" stroke="#B23A48" stroke-width="5"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" data-cuisine="china">
+<title>Vaporera con dumplings y palillos</title>
+<defs>
+<clipPath id="flag-clip-cn"><rect width="26" height="18" rx="4"/></clipPath>
+</defs>
+<rect width="160" height="160" rx="24" fill="#BE1E2D"/>
+<g filter="drop-shadow(0 4px 10px rgba(0,0,0,0.25))">
+<!-- Sticker outline -->
+<ellipse cx="80" cy="94" rx="44" ry="28" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="8"/>
+<path d="M42 66 L124 112 M48 62 L130 108" stroke="#FFFFFF" stroke-width="12" stroke-linecap="round"/>
+<!-- Bamboo steamer base -->
+<ellipse cx="80" cy="98" rx="42" ry="24" fill="#B45309"/>
+<path d="M38 98 L38 108 C38 120 122 120 122 108 L122 98 Z" fill="#D97706"/>
+<ellipse cx="80" cy="96" rx="40" ry="22" fill="#FDE68A"/>
+<!-- Steamer woven rim -->
+<ellipse cx="80" cy="94" rx="40" ry="22" fill="none" stroke="#B45309" stroke-width="3"/>
+<!-- Two dumplings -->
+<path d="M60 94 C60 84 76 84 76 94 C76 98 60 98 60 94 Z" fill="#FFFFFF"/>
+<path d="M64 88 Q68 84 72 88" stroke="#D97706" stroke-width="1.5" fill="none"/>
+<path d="M84 92 C84 82 100 82 100 92 C100 96 84 96 84 92 Z" fill="#FFFFFF"/>
+<path d="M88 86 Q92 82 96 86" stroke="#D97706" stroke-width="1.5" fill="none"/>
+<!-- Chopsticks crossed on rim -->
+<path d="M42 66 L124 112" stroke="#451A03" stroke-width="5" stroke-linecap="round"/>
+<path d="M48 62 L130 108" stroke="#78350F" stroke-width="4.5" stroke-linecap="round"/>
+</g>
+<g class="flag-badge" transform="translate(14,14)">
+<rect width="26" height="18" rx="4" fill="#0F172A" opacity="0.6"/>
+<g clip-path="url(#flag-clip-cn)">
+<rect width="26" height="18" fill="#EE1C25"/>
+<polygon points="5,4 6,7 9,7 6.5,9 7.5,12 5,10 2.5,12 3.5,9 1,7 4,7" fill="#FFFF00" transform="scale(0.85) translate(2,1)"/>
+</g>
+<rect width="26" height="18" rx="4" fill="none" stroke="#FFFFFF" stroke-width="1.5"/>
+</g>
+</svg>
